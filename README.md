@@ -1,3 +1,3 @@
-## Student Sample
+## Shaokang
 
-Shaokang here. I love computer graphics. And I recommend using Typora for Markdown editing.
+Shaokang here. I love computer graphics, games and music. And I recommend using Typora for Markdown editing.
