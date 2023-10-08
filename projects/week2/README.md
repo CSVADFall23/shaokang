@@ -1,3 +1,41 @@
 ## Project 2 Readme
 
-This is the README document. Use it to describe the project and cite sources.
+This project is to depict light propagation (or Ray Tracing) in 2D settings. For simplicity, I only involves **reflect** and **refract** in the project. 
+
+![](https://blogassets.leverageedu.com/blog/wp-content/uploads/2020/04/16224940/Reflection-Of-Light-1-1024x640.png)
+
+The pattern is generated with following logic:
+
+* First generate 2 kinds of objects (tile-based distribution), circle and cross.
+* The initial ray is situated at the center, with a random initial direction
+* The ray bounces around in the scene, on each intersection with objects, it may reflect or refract on a probability basis.
+* The ray diminishes after 100 bounces.
+
+
+
+The motive of doing this is I find ray reflection creates symmetry, and it’s interesting to see how the pattern differs even with slight change to the initial condition (say, the ray direction).  Another plus is when you print the pattern with AxiDraw, you will see the “ray path” is being mimicked by the robot arm.
+
+
+
+#### Some intermediate results:
+
+<img src="https://s2.loli.net/2023/10/08/fJbsHztSGoXVPNg.png" alt="截屏2023-10-06 09.45.07" style="zoom: 25%;" /><img src="https://s2.loli.net/2023/10/08/dGH98ncCis6wJQZ.png" alt="截屏2023-10-06 02.35.07" style="zoom:25%;" />
+
+> Random light bounces creates some interesting pattern, which is “serendipity” (I hate this word though.)
+
+
+
+#### Final Pick
+
+
+
+#### File Structures
+
+* Plug-in named [p5-svg]["https://unpkg.com/p5.js-svg@1.5.1"] is used to save the result in svg format.
+* `rays.js` includes the data structures needed
+  * `vec2` to store 2D point information
+  * `ray` 
+  * `line`
+  * `circle`
+* `trace.js` includes the basic recursive ray tracing
+* `sketch.js` includes the world settings and calling ray tracing, and file IO.
