@@ -71,6 +71,7 @@ function refract(v,n,etai_over_etat){
         return v.sub(n.scalar_mul(dt)).scalar_mul(etai_over_etat).sub(n.scalar_mul(Math.sqrt(discriminant)));
     }
     else {
+        //total internal reflection
         return reflect(v, n);
     }
 }

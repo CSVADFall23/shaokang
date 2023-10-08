@@ -1,4 +1,5 @@
-//given a ray, the scene objects, generate a list of intersection points
+//given a ray, the scene objects, recursively generate a list of intersection points
+//ordered by recursion depth
 function trace(ray, scene, max_depth, intersections){
     if (max_depth < 0) {
         return;
