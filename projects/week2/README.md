@@ -21,11 +21,19 @@ The motive of doing this is I find ray reflection creates symmetry, and it’s i
 
 <img src="https://s2.loli.net/2023/10/08/fJbsHztSGoXVPNg.png" alt="截屏2023-10-06 09.45.07" style="zoom: 25%;" /><img src="https://s2.loli.net/2023/10/08/dGH98ncCis6wJQZ.png" alt="截屏2023-10-06 02.35.07" style="zoom:25%;" />
 
+<img src="https://s2.loli.net/2023/10/09/reIMNbUoDzZpYBE.png" alt="截屏2023-10-06 10.05.05" style="zoom:25%;" />
+
 > Random light bounces creates some interesting pattern, which is “serendipity” (I hate this word though.)
 
 
 
 #### Final Pick
+
+<img src="https://s2.loli.net/2023/10/09/zKAuaybIFNjv24k.png" alt="image-20231008141330470" style="zoom:50%;" />
+
+> The first pattern has 10x10 grid, ray was trapped in some of the circles.
+>
+> The second pattern has 3x3 grid, with higher variance in circle’s radius.
 
 
 
