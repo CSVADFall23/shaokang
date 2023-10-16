@@ -5,6 +5,7 @@ class Progress{
     lengths = [];
     isFreeze = true;
     hue = 100;
+    speed = 5;
 
     getSubpathLength(){
         for(var i = 0; i < this.intersections.length-1; i++){
@@ -12,24 +13,25 @@ class Progress{
         }
     };
 
-    constructor(intersections){
+    constructor(intersections,speed){
         this.progress = 0;
         this.intersections = intersections;
         this.currRayIdx = 0;
         this.isFreeze = true;
         this.hue = Math.random()*360;
+        this.speed = speed;
         for(var i = 0; i < this.intersections.length-1; i++){
             this.lengths.push(this.intersections[i].point.sub(this.intersections[i+1].point).length());
         }
     }
 
-    advance(speed){
+    advance(){
 
         if(this.isFreeze){
             return;
         }
 
-        this.progress += speed;
+        this.progress += this.speed;
         if(this.progress > this.lengths[this.currRayIdx]){
             this.progress = 0;
             this.currRayIdx++;
@@ -46,7 +48,7 @@ class Progress{
         var currPoint = this.intersections[this.currRayIdx].point;
         var nextPoint = this.intersections[this.currRayIdx+1].point;
         var currDir = nextPoint.sub(currPoint).normalize();
-
+        stroke(this.hue,50,this.currRayIdx*5);
         line(currPoint.x, currPoint.y, currPoint.x+currDir.x*this.progress, currPoint.y+currDir.y*this.progress);
     }
 
