@@ -2,13 +2,13 @@ let objects = [];
 let objIndex = 3;
 let width = 1100;
 let height = 850;
-let tile_x = 3;
-let tile_y = 3;
-let minRadius = 10;
-let maxRadius = 1000;
+let tile_x = 10;
+let tile_y = 10;
+let minRadius = 40;
+let maxRadius = 40;
 let max_depth = 50;
 let brightness = 10;
-let circle_prob = 1.0;
+let circle_prob = 0.75;
 let refractRatio = 0.05;
 let ray_stroke_factor = 1;
 let tile_offset = 5.0;
@@ -128,6 +128,7 @@ document.addEventListener("playSound", function(e) {
   var mappedIndex = noteMapping(parseInt(song[noteIdx]));
   console.log(mappedIndex);
   notes[mappedIndex].play();
+  // notes[getRandomInt(notes.length)].play();
   noteIdx++;
 });
 
