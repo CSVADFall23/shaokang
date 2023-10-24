@@ -14,7 +14,7 @@ I implemented 2 forms interactions and conceived another form of interaction.
   * Swap color distribution, e.g. all pixels were red are now blue, all pixels were blue are now red.
   * Change every color in the palette based some source and destination color.
 
-<img src="/Users/naoyuki/Library/Application%20Support/typora-user-images/image-20231024001149018.png" alt="image-20231024001149018" style="zoom:50%;" />
+<img src="https://s2.loli.net/2023/10/24/c5Ka6EFYVJTtHC8.png" alt="image-20231024001149018" style="zoom:50%;" />
 
 > Palette distribution
 
