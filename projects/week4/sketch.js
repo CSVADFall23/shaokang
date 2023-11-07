@@ -2,7 +2,7 @@ let img;
 //pixels in rgba format
 let pix = [];
 //Combine topK if the colors are close enough
-let threshold = 50;
+let threshold = 100;
 let combined = [];
 //kv: original color, mapped colors
 let colorMapping = {};
@@ -13,7 +13,7 @@ let destColor = {color:"rgb(0,0,0)"};
 
 let gui;
 function preload(){
-  img = loadImage('sample_image.png'); // Load the image
+  img = loadImage('desert.png'); // Load the image
 }
 
 function setup() {
