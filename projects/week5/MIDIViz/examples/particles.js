@@ -12,7 +12,6 @@ new p5(function(p5){
         p5.stroke(255);
         p5.noFill();
 
-        
         particles.push(new Particle(100, Math.random()*360,0));
         particles.forEach(p=>{
             if(p.checkBoundary(p5)){
