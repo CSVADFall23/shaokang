@@ -1,4 +1,4 @@
-import NotePlayer from "../NotePlayer.js";
+import NotePlayer from "../src/NotePlayer.js";
 //a midi visualizer with Particle and NotePlayer class
 new p5(function(p5){
     let list_of_particles = [];
@@ -30,7 +30,7 @@ new p5(function(p5){
         p5.noFill();
 
         for(var i=0;i<this.trackNum;i++){
-            list_of_particles[i].push(new Particle(100*(i+1), Math.random()*360,i));
+            list_of_particles[i].push(new Particle(100*(i+1), Math.random()*360,i,5e-4));
             list_of_particles[i].forEach(p=>{
                 if(p.checkBoundary(p5)){
                     list_of_particles[i].splice(list_of_particles[i].indexOf(p),1);
@@ -46,7 +46,7 @@ new p5(function(p5){
 
     //on note played, move particle group faster
     document.addEventListener("notePlayed", (e)=>{
-        for(var i=0; i<10;i++)
+        for(var i=0; i<5;i++)
             list_of_particles[e.detail.trackNum].forEach(p=> p.advance());
     });
 

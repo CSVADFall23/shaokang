@@ -1,4 +1,4 @@
-import NotePlayer from "../NotePlayer.js";
+import NotePlayer from "../src/NotePlayer.js";
 
 new p5(function(p5){
 
@@ -6,11 +6,7 @@ new p5(function(p5){
         const url = "../assets/dailyLife.mid"
         const player = new NotePlayer();
         await player.load(url);
-        player.playWith("acoustic_guitar_nylon");
+        player.defaultPlay();
     }
 
-    //called on each frame
-    p5.draw = function() {
-
-    }
 });

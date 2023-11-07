@@ -13,7 +13,7 @@ new p5(function(p5){
         p5.noFill();
 
         
-        particles.push(new Particle(100*(i+1), Math.random()*360,i));
+        particles.push(new Particle(100, Math.random()*360,0));
         particles.forEach(p=>{
             if(p.checkBoundary(p5)){
                 particles.splice(particles.indexOf(p),1);

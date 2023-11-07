@@ -1,5 +1,5 @@
 import { Reverb, SplendidGrandPiano, Soundfont } from "https://unpkg.com/smplr/dist/index.mjs"; // needs to be a url
-import FileHandler from "./fileHandler.js";
+import FileHandler from "./FileHandler.js";
 var constraints = { audio: true } // add video constraints if required
 
 //A MIDI note player

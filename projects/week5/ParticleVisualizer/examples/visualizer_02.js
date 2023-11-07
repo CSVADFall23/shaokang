@@ -1,4 +1,4 @@
-import NotePlayer from "../NotePlayer.js";
+import NotePlayer from "../src/NotePlayer.js";
 //a midi visualizer with Particle and NotePlayer class
 new p5(function(p5){
     let list_of_particles = [];
@@ -48,7 +48,7 @@ new p5(function(p5){
         let minPitch = player.getMinMaxPitch(trackIdx).minPitch;
         let maxPitch = player.getMinMaxPitch(trackIdx).maxPitch;
 
-        for(var i=0; i<5;i++)
+        for(var i=0; i<10;i++)
             list_of_particles[trackIdx].push(new Particle(150*(trackIdx+1), p5.map(e.detail.pitch,minPitch,maxPitch,0,360),trackIdx));
     });
 

@@ -5,10 +5,10 @@ class Particle{
     size;
     color;
 
-    constructor(radius, deg, idx){
+    constructor(radius, deg, idx, speed_scale=5e-3){
         this.position = vec2.fromDegree(deg).scalar_mul(radius);
         this.velocity = new vec2(0,0);
-        this.acceleration = this.position.copy().scalar_mul(Math.random()*5e-3);
+        this.acceleration = this.position.copy().scalar_mul(Math.random()*speed_scale);
         this.size = Math.random()*5*(idx+2);
         this.color = [200+55*Math.random(), 200+55*Math.random(), 200+55*Math.random()]
     }
