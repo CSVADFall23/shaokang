@@ -151,7 +151,7 @@ class NotePlayer{
                 instr.output.addEffect("reverb",reverb,this.trackSettings[i].reverb);
 
                 this.tracks[i].notes.forEach(note => {
-                    instr.start({ note: note.midi+this.trackSettings[i].shift, velocity: note.velocity, duration: note.duration, time: note.time + now,
+                    instr.start({ note: note.midi+this.trackSettings[i].shift, velocity: note.velocity, duration: note.duration+0.5, time: note.time + now,
                         onStart: () => {
                             var e = new CustomEvent("notePlayed",{bubbles: true, detail:{pitch:note.midi, trackNum:i }});
                             document.dispatchEvent(e);

@@ -6,7 +6,8 @@ new p5(function(p5){
         const url = "../assets/dailyLife.mid"
         const player = new NotePlayer();
         await player.load(url);
-        player.defaultPlay();
+        player.setAllInstruments("marimba");
+        player.play();
     }
 
 });

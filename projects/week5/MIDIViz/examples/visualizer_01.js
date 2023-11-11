@@ -46,7 +46,7 @@ new p5(function(p5){
 
     //on note played, move particle group faster
     document.addEventListener("notePlayed", (e)=>{
-        for(var i=0; i<5;i++)
+        for(var i=0; i<20;i++)
             list_of_particles[e.detail.trackNum].forEach(p=> p.advance());
     });
 

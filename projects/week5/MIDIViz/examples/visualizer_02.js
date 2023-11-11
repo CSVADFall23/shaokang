@@ -9,8 +9,7 @@ new p5(function(p5){
         const url = "../assets/uneBarque.mid"        
         await player.load(url);
 
-        player.setReverb(.3);
-        player.setInstrument("piano",0);
+        player.setReverb(.3,0);
         player.play();
 
         this.trackNum = player.tracks.length;
