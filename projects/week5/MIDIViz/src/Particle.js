@@ -5,6 +5,7 @@ class Particle{
     size;
     color;
 
+    //
     constructor(radius, deg, idx, speed_scale=5e-3){
         this.position = vec2.fromDegree(deg).scalar_mul(radius);
         this.velocity = new vec2(0,0);
