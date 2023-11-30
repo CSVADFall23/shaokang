@@ -10,6 +10,7 @@ class FileHandler{
     //use Tone.js to parse MIDI file
     //Tone.js@https://github.com/Tonejs/Midi
     //use by include from cdn <script src="https://unpkg.com/@tonejs/midi"></script>
+    //or include from npm import {Midi} from '@tonejs/midi'
     async loadMidi(filePath){
         const midi = await Midi.fromUrl(filePath);
         midi.tracks.forEach(track => {
