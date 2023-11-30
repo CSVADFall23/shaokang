@@ -72,6 +72,10 @@ class vec2{
         return new vec2(Math.cos(rad), Math.sin(rad)).normalize();
     }
 
+    static zeros(){
+        return new vec2(0,0);
+    }
+
 };
 
 export default vec2;

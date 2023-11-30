@@ -83,7 +83,7 @@ class Collection{
         this.onNoteEnded = callback;
         document.addEventListener("noteEnded", (e)=>this.onNoteEnded(e.detail));
     }
-    
+
 };
 
 export default Collection;

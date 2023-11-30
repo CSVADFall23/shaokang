@@ -14,6 +14,13 @@ class CircularParticle extends Primitive{
         this.color = color;
     }
 
+    //override the bounary function, the actual draw position is different from the position of the particle
+    checkBoundary(p5){
+        if(this.position.x<-p5.windowWidth/2 || this.position.x>p5.windowWidth/2 || this.position.y<-p5.windowHeight/2 || this.position.y>p5.windowHeight/2)
+            return true;
+        return false;
+    }
+
     draw(p5){
         super.draw(p5);
         p5.circle(this.position.x+p5.windowWidth/2, this.position.y+p5.windowHeight/2, this.size);

@@ -38,7 +38,7 @@ class Primitive{
     }
 
     checkBoundary(p5){
-        if(this.position.x<-p5.windowWidth/2 || this.position.x>p5.windowWidth/2 || this.position.y<-p5.windowHeight/2 || this.position.y>p5.windowHeight/2)
+        if(this.position.x<0 || this.position.x>p5.windowWidth || this.position.y<0 || this.position.y>p5.windowHeight)
             return true;
         return false;
     }

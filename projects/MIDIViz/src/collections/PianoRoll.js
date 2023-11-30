@@ -2,7 +2,16 @@ import Quad from "../primitives/Quad.js";
 import Collection from "./BaseCollection.js";
 import vec2 from "../utils/Vec2.js";
 
+// ----------------------------------------------------------------
+// PianoRoll.js
+// A piano roll is a collection of keys, each key is a Quad
+// with extra pitch, isWhiteKey attributes
+// height: height of the piano roll, in pixels
+// color_1: color of the white keys
+// color_2: color of the black keys
+// ----------------------------------------------------------------
 class PianoRoll extends Collection {
+
     //height of the piano roll, in pixels
     height;
     //color of the white keys

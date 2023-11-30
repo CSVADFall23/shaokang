@@ -7,7 +7,7 @@ new p5(function(p5){
     
     p5.setup = async function() {
         p5.createCanvas(p5.windowWidth,p5.windowHeight);
-        const url = "../assets/bodyAndSoul.mid"        
+        const url = "../../assets/bodyAndSoul.mid"        
         await player.load(url);
         player.setAllSustain(0.5);
         player.play();

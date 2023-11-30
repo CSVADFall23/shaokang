@@ -1,6 +1,6 @@
 import CompoundCollection from './CompoundCollection.js';
 import PianoRoll from './PianoRoll.js';
-import Particles from './particles.js';
+import Particles from './Particles.js';
 
 class PianoRollWithParticles extends CompoundCollection{
 

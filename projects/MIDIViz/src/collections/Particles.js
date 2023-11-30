@@ -22,7 +22,15 @@ class Particles extends Collection {
         this.speed_scale = speed_scale;
     }
 
-    add(position, init_dir = new vec2(0, 1), size = 10, color = [255, 255, 255]) {
+    /**
+     * @param {vec2} position
+     * @param {vec2} init_dir
+     * @param {number} size
+     * @param {number[]} color
+     * @returns {void}
+     * @description add particles given position, initial direction, size and color
+     */
+    add(position, init_dir = new vec2(0, 1), size = 10, color = [0,0,0]) {
         this.collection.push(new Particle(position, new vec2(0, 0), init_dir.scalar_mul(this.speed_scale), size, this.trackIdx, color));
     }
 
