@@ -1,7 +1,6 @@
 import Primitive from "./Primitive.js";
 
 class Particle extends Primitive{
-
     draw(p5){
         p5.fill(this.color);
         p5.noStroke();
