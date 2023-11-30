@@ -61,11 +61,16 @@ class vec2{
 
     //random sample a 2D vector with length 1
     //non-uniform sampling (on degree) of a unit circle, it's uniform on area of rectangle
-    //it has a bias towards angles around 0.5*k*PI (k is an integer)
-    static random2D(){
+    //it has a bias towards larger area
+    static random2DNormalized(){
         return new vec2(Math.random()*2-1, Math.random()*2-1).normalize();
     }
-    
+
+    //random 2D vector random length
+    static random2D(){
+        return new vec2(Math.random()*2-1, Math.random()*2-1);
+    }
+
     //given degree, return a vector with that degree
     static fromDegree(degree){
         let rad = degree * Math.PI / 180;

@@ -29,6 +29,7 @@ class CompoundCollection{
     }
 
     step(p5){
+        //custom step function, called on each frame
         this.collections.forEach(collection=>{
             collection.step(p5);
         });
@@ -62,7 +63,7 @@ class CompoundCollection{
     setOnNotePlayed(idx,callback){
         this.collections[idx].setOnNotePlayed(callback);
     }
-    
+
     //set event listener for note ended
     setOnNoteEnded(idx,callback){
         this.collections[idx].setOnNoteEnded(callback);

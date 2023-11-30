@@ -98,14 +98,6 @@ class PianoRoll extends Collection {
     setColor_2(color_2){
         this.color_2 = color_2;
     }
-
-    //debug purpose only
-    // logKeys(){
-    //     this.collection.forEach(key=>{
-    //         console.log(key.pitch);
-    //     })
-    // }
-
 };
 
 export default PianoRoll;
