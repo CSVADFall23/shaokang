@@ -30,7 +30,7 @@ class Particle{
         this.trackIdx = trackIdx;
     }
 
-
+    //important API
     advance(){
         this.velocity = this.velocity.add(this.acceleration);
         this.position = this.position.add(this.velocity);
