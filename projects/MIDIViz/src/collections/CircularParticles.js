@@ -28,8 +28,8 @@ class CircularParticles extends Collection{
         this.speed_scale = speed_scale;
     }
 
-    add(deg, size=10 ,color=[255,255,255]){
-        this.collection.push(new CircularParticle(this.radius, deg, this.trackIdx, this.speed_scale, size, color));
+    add(deg, size=10 ,color=[255,255,255], speed_func=Math.random){
+        this.collection.push(new CircularParticle(this.radius, deg, this.trackIdx, this.speed_scale, size, color, speed_func));
     }
 
     advance(){
