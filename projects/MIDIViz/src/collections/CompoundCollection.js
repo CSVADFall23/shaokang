@@ -1,4 +1,3 @@
-import Collection from "./BaseCollection";
 //an array of collections
 class CompoundCollection{
     //collections
@@ -29,15 +28,15 @@ class CompoundCollection{
         return this.collections.length;
     }
 
-    step(){
+    step(p5){
         this.collections.forEach(collection=>{
-            collection.step();
+            collection.step(p5);
         });
     }
 
-    draw(){
+    draw(p5){
         this.collections.forEach(collection=>{
-            collection.draw(this.p5);
+            collection.draw(p5);
         });
     }
 
@@ -47,9 +46,9 @@ class CompoundCollection{
         });
     }
 
-    checkBoundary(){
+    checkBoundary(p5){
         this.collections.forEach(collection=>{
-            collection.checkBoundary(this.p5);
+            collection.checkBoundary(p5);
         });
     }
 
@@ -63,4 +62,11 @@ class CompoundCollection{
     setOnNotePlayed(idx,callback){
         this.collections[idx].setOnNotePlayed(callback);
     }
+    
+    //set event listener for note ended
+    setOnNoteEnded(idx,callback){
+        this.collections[idx].setOnNoteEnded(callback);
+    }
 };
+
+export default CompoundCollection;

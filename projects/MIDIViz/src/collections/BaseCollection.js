@@ -1,6 +1,7 @@
 class Collection{
     collection;
     onNotePlayed;
+    onNoteEnded;
 
     constructor(){
         this.collection = [];
@@ -76,6 +77,13 @@ class Collection{
         this.onNotePlayed = callback;
         document.addEventListener("notePlayed", (e)=>this.onNotePlayed(e.detail));
     }
+
+    //set event listener for note ended
+    setOnNoteEnded(callback){
+        this.onNoteEnded = callback;
+        document.addEventListener("noteEnded", (e)=>this.onNoteEnded(e.detail));
+    }
+    
 };
 
 export default Collection;

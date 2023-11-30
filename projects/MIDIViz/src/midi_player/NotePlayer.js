@@ -141,8 +141,12 @@ class NotePlayer{
             piano.loaded().then(() => {
                 for(let i=0;i<this.tracks.length;i++){
                     this.tracks[i].notes.forEach(note => {
-                        piano.start({ note: note.midi+this.trackSettings[i].shift, velocity: note.velocity, duration: note.duration+this.trackSettings[i].sustain, time: note.time + now, onStart: () => {
+                        piano.start({ note: note.midi+this.trackSettings[i].shift, velocity: note.velocity, duration: note.duration+this.trackSettings[i].sustain, time: note.time + now, 
+                            onStart: () => {
                             var e = new CustomEvent("notePlayed", {bubbles: true, detail:{note: note, trackNum:i}});
+                            document.dispatchEvent(e);
+                          }, onEnded: () => {
+                            var e = new CustomEvent("noteEnded",{bubbles: true, detail:{note: note, trackNum:i}});
                             document.dispatchEvent(e);
                           }});
                     });
@@ -169,6 +173,9 @@ class NotePlayer{
                     instr.start({ note: note.midi+this.trackSettings[i].shift, velocity: note.velocity, duration: note.duration+this.trackSettings[i].sustain, time: note.time + now,
                         onStart: () => {
                             var e = new CustomEvent("notePlayed",{bubbles: true, detail:{note: note, trackNum:i}});
+                            document.dispatchEvent(e);
+                          },onEnded: () => {
+                            var e = new CustomEvent("noteEnded",{bubbles: true, detail:{note: note, trackNum:i}});
                             document.dispatchEvent(e);
                           }});
                 });

@@ -18,6 +18,15 @@ class PianoRoll extends Collection {
         this.initCollection(p5);
     }
 
+    //disable moving and boundary check
+    advance(){}; //do nothing
+    checkBoundary(){}; //do nothing
+
+    draw(p5){ //draw the keys
+        p5.stroke(1);
+        this.collection.forEach(item=>item.draw(p5));
+    }
+
     initCollection(p5){
         //draw the piano roll at the bottom of the screen
         const offset = p5.windowHeight-this.height;
@@ -35,6 +44,7 @@ class PianoRoll extends Collection {
             const key = new Quad(new vec2(i*whiteKeyWidth,offset), 0, 0, whiteKeyWidth, whiteKeyHeight, this.color_1);
             const steps = [2,2,1,2,2,2,1];
             key.pitch = notePitch;
+            key.isWhiteKey = true;
 
             notePitch += steps[i%7];    
             this.collection.push(key);
@@ -50,6 +60,7 @@ class PianoRoll extends Collection {
                 const key = new Quad(new vec2(i*whiteKeyWidth-blackKeyWidth/2,offset), 0, 0, blackKeyWidth, blackKeyHeight, this.color_2);
                 var index = blackKeyIndices.indexOf(i%7);
                 key.pitch = blackKeyIndicesInHalf[index]+12*Math.floor(i/7)+24;
+                key.isWhiteKey = false;
 
                 this.collection.push(key);
             }
