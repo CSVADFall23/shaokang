@@ -1,7 +1,7 @@
-import Particle from "./Particle.js";
+import Primitive from "./Primitive.js";
 import vec2 from "../utils/Vec2.js";
 
-class CircularParticle extends Particle{
+class CircularParticle extends Primitive{
     //a circular distribution of particles, random size,
     //random speed, random color
     constructor(radius, deg, trackIdx, speed_scale=5e-3,size=5, color=[255,255,255], speed_func = Math.random){

@@ -1,4 +1,4 @@
-import NotePlayer from "../src/NotePlayer.js";
+import NotePlayer from "../src/midi_player/NotePlayer.js";
 
 new p5(function(p5){
 

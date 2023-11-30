@@ -1,6 +1,7 @@
 import vec2 from "../utils/Vec2.js";
 
-class Particle{
+//By default draw circles
+class Primitive{
     //position, vec2
     //velocity, vec2
     //acceleration, vec2
@@ -50,4 +51,4 @@ class Particle{
 
 };
 
-export default Particle;
+export default Primitive;

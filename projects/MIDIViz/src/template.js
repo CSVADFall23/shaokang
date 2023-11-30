@@ -9,7 +9,7 @@ new p5(function(p5){
         p5.createCanvas(p5.windowWidth,p5.windowHeight);
         const url = "../assets/bodyAndSoul.mid"        
         await player.load(url);
-        player.setAllSustain(0.3);
+        player.setAllSustain(0.5);
         player.play();
     }
 
