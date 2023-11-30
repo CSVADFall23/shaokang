@@ -1,4 +1,4 @@
-import Collection from "./BaseCollections.js";
+import Collection from "./BaseCollection.js";
 import CircularParticle from "../primitives/CircularParticle.js";
 
 class CircularParticles extends Collection{
@@ -32,17 +32,6 @@ class CircularParticles extends Collection{
         this.collection.push(new CircularParticle(this.radius, deg, this.trackIdx, this.speed_scale, size, color, speed_func));
     }
 
-    advance(){
-        this.collection.forEach(item=>item.advance());
-    }
-
-    checkBoundary(p5){
-        this.collection.forEach(item=>item.checkBoundary(p5));
-    }
-
-    draw(p5){
-        this.collection.forEach(item=>item.draw(p5));
-    }
 }
 
 export default CircularParticles;

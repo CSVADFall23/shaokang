@@ -46,7 +46,31 @@ class Primitive{
     draw(p5){
         p5.fill(this.color);
         p5.noStroke();
-        p5.circle(this.position.x+p5.windowWidth/2, this.position.y+p5.windowHeight/2, this.size);
+    }
+
+    //setters
+    setColor(color){
+        this.color = color;
+    }
+
+    setTrackIdx(trackIdx){
+        this.trackIdx = trackIdx;
+    }
+
+    setAcceleration(acceleration){
+        this.acceleration = acceleration;
+    }
+
+    setVelocity(velocity){
+        this.velocity = velocity;
+    }
+
+    setPosition(position){
+        this.position = position;
+    }
+
+    setSize(size){
+        this.size = size;
     }
 
 };

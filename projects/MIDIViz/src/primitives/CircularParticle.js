@@ -4,7 +4,7 @@ import vec2 from "../utils/Vec2.js";
 class CircularParticle extends Primitive{
     //a circular distribution of particles, random size,
     //random speed, random color
-    constructor(radius, deg, trackIdx, speed_scale=5e-3,size=5, color=[255,255,255], speed_func = Math.random){
+    constructor(radius, deg, trackIdx, speed_scale=5e-3, size=5, color=[255,255,255], speed_func = Math.random){
         super();
         this.position = vec2.fromDegree(deg).scalar_mul(radius);
         this.velocity = new vec2(0,0);
@@ -12,6 +12,11 @@ class CircularParticle extends Primitive{
         this.size = size;
         this.trackIdx = trackIdx;
         this.color = color;
+    }
+
+    draw(p5){
+        super.draw(p5);
+        p5.circle(this.position.x+p5.windowWidth/2, this.position.y+p5.windowHeight/2, this.size);
     }
 
 }

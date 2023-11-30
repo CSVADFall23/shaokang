@@ -1,5 +1,5 @@
-import CircularParticles from "../src/collections/CircularParticles.js";
-import NotePlayer from "../src/midi_player/NotePlayer.js";
+import CircularParticles from "../collections/CircularParticles.js";
+import NotePlayer from "../midi_player/NotePlayer.js";
 //a midi visualizer with Particle and NotePlayer class
 new p5(function(p5){
     const particles = new CircularParticles(100,0,5e-3);
