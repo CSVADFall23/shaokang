@@ -11,7 +11,8 @@ new p5(function(p5){
         await player.load(url);
         player.setAllSustain(0.5);
         player.play();
-        particles.setSize(5);
+        particles.setSize(10);
+        particles.setSpeedScale(5e-3);
     }
 
     //called on each frame

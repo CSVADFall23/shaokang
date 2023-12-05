@@ -10,7 +10,7 @@ class QuadSet extends Collection {
      * @returns {void}
      * @description constructor for a quads collection, given track index and speed scale
      */
-    constructor(trackIdx = 0, speed_scale = 5e-3, listenToAll = false) {
+    constructor(trackIdx = 0, speed_scale = 5e-3, listenToAll = true) {
         super(trackIdx, speed_scale, listenToAll);
         this.setOnNotePlayed(this.defaultOnNotePlayed);
     }
@@ -25,7 +25,7 @@ class QuadSet extends Collection {
      * @description add particles given position, initial direction, size and color
      */
     add(position, acceleration = new vec2(0, -1), sizeX = 12.5, sizeY=10, color = [255,255,255]) {
-        this.collection.push(new Quad(position, acceleration, this.trackIdx,this.speed_scale, sizeX, sizeY, color));
+        this.collection.push(new Quad(position, new vec2(0,0), acceleration.scalar_mul(this.speed_scale), this.trackIdx, sizeX, sizeY, color));
     }
 
     //no pianoroll info given

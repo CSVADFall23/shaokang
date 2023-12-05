@@ -27,6 +27,7 @@ class CompoundCollection{
     setCollectionListen(collectionIdx, trackIdx){
         console.assert(collectionIdx < this.collections.length && collectionIdx>=0,{msg:"Invalid collection index"});
         this.collections[collectionIdx].setTrackIdx(trackIdx);
+        this.setCollectionListenToAll(collectionIdx,false);
     }
 
     get(){

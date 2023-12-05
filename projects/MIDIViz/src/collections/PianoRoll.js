@@ -69,7 +69,7 @@ class PianoRoll extends Collection {
         let notePitch = 24;
         for(let i=0;i<52;i++){
             //the keys are all static because the speed scale is 0
-            const key = new Quad(new vec2(i*whiteKeyWidth,offset), new vec2(0,0), 0, 0, whiteKeyWidth, whiteKeyHeight, this.color_1);
+            const key = new Quad(new vec2(i*whiteKeyWidth,offset), new vec2(0,0), new vec2(0,0), 0, whiteKeyWidth, whiteKeyHeight, this.color_1);
             const steps = [2,2,1,2,2,2,1];
             key.pitch = notePitch;
             key.isWhiteKey = true;
@@ -84,7 +84,7 @@ class PianoRoll extends Collection {
 
         for(let i=0;i < 52;i++){
             if(blackKeyIndices.includes(i%7)){
-                const key = new Quad(new vec2(i*whiteKeyWidth-blackKeyWidth/2,offset), new vec2(0,0), 0, 0, blackKeyWidth, blackKeyHeight, this.color_2);
+                const key = new Quad(new vec2(i*whiteKeyWidth-blackKeyWidth/2,offset),new vec2(0,0), new vec2(0,0), 0, blackKeyWidth, blackKeyHeight, this.color_2);
                 var index = blackKeyIndices.indexOf(i%7);
                 key.pitch = blackKeyIndicesInHalf[index]+12*Math.floor(i/7)+24;
                 key.isWhiteKey = false;
