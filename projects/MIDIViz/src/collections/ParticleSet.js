@@ -2,24 +2,11 @@ import Collection from "./BaseCollection.js";
 import Particle from "../primitives/Particle.js";
 import vec2 from "../utils/Vec2.js";
 
-class Particles extends Collection {
-    //track index
-    trackIdx;
-    //speed scale
-    speed_scale;
+class ParticleSet extends Collection {
 
     constructor(trackIdx = 0, speed_scale = 5e-3) {
-        super();
-        this.trackIdx = trackIdx;
-        this.speed_scale = speed_scale;
-    }
-
-    setTrackIdx(trackIdx) {
-        this.trackIdx = trackIdx;
-    }
-
-    setSpeedScale(speed_scale) {
-        this.speed_scale = speed_scale;
+        super(trackIdx, speed_scale);
+        this.setOnNotePlayed(this.defaultOnNotePlayed);
     }
 
     /**
@@ -34,6 +21,16 @@ class Particles extends Collection {
         this.collection.push(new Particle(position, new vec2(0, 0), acceleration.scalar_mul(this.speed_scale), size, this.trackIdx, color));
     }
 
+    // no pianoroll info given,
+    // a simple mapping is given by scaling the pitch
+    defaultOnNotePlayed=(detail)=>{
+        let pitch = detail.note.midi;
+        let pos = new vec2(pitch/127*1920,0);
+        for(let i=0;i<10;i++)
+        {
+            this.add(pos,new vec2(0,1).add(vec2.random2D().scalar_mul(0.1)),10,[Math.random()*50+200,Math.random()*50+200,Math.random()*50+200]);
+        }
+    };
 };
 
-export default Particles;
+export default ParticleSet;

@@ -1,12 +1,26 @@
-import Primitive from "../primitives/Primitive.js";
-
 class Collection{
     collection;
     onNotePlayed;
     onNoteEnded;
 
-    constructor(){
+    //track index
+    trackIdx;
+    //speed scale
+    speed_scale;
+
+    setTrackIdx(trackIdx) {
+        this.trackIdx = trackIdx;
+    }
+
+    setSpeedScale(speed_scale) {
+        this.speed_scale = speed_scale;
+    }
+
+
+    constructor(trackIdx = 0, speed_scale = 5e-3) {
         this.collection = [];
+        this.trackIdx = trackIdx;
+        this.speed_scale = speed_scale;
 
         this.onNotePlayed = (detail)=>{
 

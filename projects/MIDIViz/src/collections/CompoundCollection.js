@@ -8,11 +8,11 @@ class CompoundCollection{
         this.collections = [];
     }
 
-    add(collection){
+    addCollection(collection){
         this.collections.push(collection);
     }
 
-    remove(idx){
+    removeCollection(idx){
         this.collections.splice(idx,1);
     }
 

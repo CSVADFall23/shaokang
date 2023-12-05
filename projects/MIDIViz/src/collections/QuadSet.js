@@ -1,7 +1,8 @@
 import Collection from "./BaseCollection.js";
 import Quad from "../primitives/Quad.js";
+import vec2 from "../utils/Vec2.js";
 
-class Quads extends Collection {
+class QuadSet extends Collection {
     //track index
     trackIdx;
     //speed scale
@@ -17,6 +18,7 @@ class Quads extends Collection {
         super();
         this.trackIdx = trackIdx;
         this.speed_scale = speed_scale;
+        this.setOnNotePlayed(this.defaultOnNotePlayed);
     }
 
     setTrackIdx(trackIdx) {
@@ -39,6 +41,16 @@ class Quads extends Collection {
     add(position, acceleration = new vec2(0, -1), sizeX = 12.5, sizeY=10, color = [255,255,255]) {
         this.collection.push(new Quad(position, acceleration, this.trackIdx,this.speed_scale, sizeX, sizeY, color));
     }
+
+    //no pianoroll info given
+    //a simple mapping is given by scaling the pitch
+    defaultOnNotePlayed=(detail)=>{
+        let pitch = detail.note.midi;
+        let duration = detail.note.duration;
+        let pos = new vec2(pitch/127*1920,0);
+        this.add(pos,new vec2(0,1),12.5, 80*duration,[Math.random()*50+200,Math.random()*50+200,Math.random()*50+200]);
+    };
+
 };
 
-export default Quads;
+export default QuadSet;

@@ -19,15 +19,34 @@ class PianoRoll extends Collection {
     //color of the black keys
     color_2;
 
+    //default onNotePlayed callback
+    defaultOnNotePlayed = (detail)=>{
+        let pitch = detail.note.midi;
+        this.setNoteColor(pitch,[Math.random()*50+200,Math.random()*50+200,Math.random()*50+200]);
+    }
+    
+    //default onNoteEnded callback
+    defaultOnNoteEnded = (detail)=>{
+        let pitch = detail.note.midi;
+        if(this.getNoteByPitch(pitch).isWhiteKey){
+            this.setNoteColor(pitch,this.color_1);
+        }
+        else{
+            this.setNoteColor(pitch,this.color_2);
+        }
+    };
+
     constructor(p5, height=100, color_1=[255,255,255], color_2=[0,0,0]){
-        super();
+        super(0,0);
         this.height = height;
         this.color_1 = color_1;
         this.color_2 = color_2;
         this.initCollection(p5);
+        this.setOnNoteEnded(this.defaultOnNoteEnded);
+        this.setOnNotePlayed(this.defaultOnNotePlayed);
     }
 
-    //disable moving and boundary check
+    //disable movement and boundary check
     advance(){}; //do nothing
     checkBoundary(){}; //do nothing
 
