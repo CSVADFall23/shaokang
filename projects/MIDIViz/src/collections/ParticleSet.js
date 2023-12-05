@@ -5,8 +5,8 @@ import PianoRoll from "./PianoRoll.js";
 
 class ParticleSet extends Collection {
 
-    constructor(trackIdx = 0, speed_scale = 5e-3) {
-        super(trackIdx, speed_scale);
+    constructor(trackIdx = 0, speed_scale = 5e-3, listenToAll = false) {
+        super(trackIdx, speed_scale, listenToAll);
         this.setOnNotePlayed(this.defaultOnNotePlayed);
     }
 

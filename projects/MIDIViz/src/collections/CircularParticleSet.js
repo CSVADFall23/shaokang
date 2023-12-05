@@ -7,14 +7,14 @@ class CircularParticleSet extends Collection{
     //size coefficient
     sizeCoeff;
 
-
-    //default callback
+    //default callback with no min max pitch info given
     defaultOnNotePlayed= (detail)=>{
         let deg = detail.note.midi/127*360;
         for(let i=0;i<10;i++)
             this.add(deg,Math.random()*this.sizeCoeff+1,[Math.random()*50+200,Math.random()*50+200,Math.random()*50+200]);
     };
 
+    //default callback with min max pitch info given, mapped pitch to 0 to 360
     defaultOnNotePlayedWithMinMax(detail, minPitch, maxPitch){
         let pitch = detail.note.midi;
         //map the pitch to a degree in 0 to 360
@@ -23,9 +23,8 @@ class CircularParticleSet extends Collection{
             this.add(deg,Math.random()*this.sizeCoeff+1,[Math.random()*50+200,Math.random()*50+200,Math.random()*50+200]);
     };
     
-
-    constructor(radius=100, trackIdx=0, speed_scale=5e-3){
-        super(trackIdx, speed_scale);
+    constructor(radius=100, trackIdx=0, speed_scale=5e-3, listenToAll=true){
+        super(trackIdx, speed_scale, listenToAll);
         this.radius = radius;
         this.setOnNotePlayed(this.defaultOnNotePlayed);
         this.sizeCoeff = 15;

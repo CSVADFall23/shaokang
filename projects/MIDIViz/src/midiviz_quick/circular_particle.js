@@ -11,6 +11,7 @@ new p5(function(p5){
         await player.load(url);
         player.setAllSustain(0.5);
         player.play();
+        particles.setSize(5);
     }
 
     //called on each frame
@@ -21,13 +22,8 @@ new p5(function(p5){
         particles.step(p5);
     }
 
-    //on note played, generate 10 particles
-    particles.setOnNotePlayed(function(detail){
-        let minPitch = player.getMinMaxPitch(detail.trackNum).minPitch;
-        let maxPitch = player.getMinMaxPitch(detail.trackNum).maxPitch;
-        let deg = p5.map(detail.note.midi,minPitch,maxPitch,0,360);
-        for(let i=0;i<10;i++)
-            particles.add(deg,Math.random()*5+1,[Math.random()*50+200,Math.random()*50+200,Math.random()*50+200]);
-        }
-    )
+    particles.setOnNotePlayed((detail)=>{
+        let minmax = player.getMinMaxPitch(0);
+        particles.defaultOnNotePlayedWithMinMax(detail,minmax.minPitch,minmax.maxPitch);
+    });
 });

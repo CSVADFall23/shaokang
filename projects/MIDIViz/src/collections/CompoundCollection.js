@@ -13,7 +13,20 @@ class CompoundCollection{
     }
 
     removeCollection(idx){
+        console.assert(collectionIdx < this.collections.length && collectionIdx>=0,{msg:"Invalid collection index"});
         this.collections.splice(idx,1);
+    }
+
+    //set certain collection listen to all tracks or not
+    setCollectionListenToAll(collectionIdx,listenToAll){
+        console.assert(collectionIdx < this.collections.length && collectionIdx>=0,{msg:"Invalid collection index"});
+        this.collections[collectionIdx].setListenToAll(listenToAll);
+    };    
+
+    //set certain collection listen to a certain track
+    setCollectionListen(collectionIdx, trackIdx){
+        console.assert(collectionIdx < this.collections.length && collectionIdx>=0,{msg:"Invalid collection index"});
+        this.collections[collectionIdx].setTrackIdx(trackIdx);
     }
 
     get(){
@@ -21,6 +34,7 @@ class CompoundCollection{
     }
 
     get(idx){
+        console.assert(collectionIdx < this.collections.length && collectionIdx>=0,{msg:"Invalid collection index"});
         return this.collections[idx];
     }
 

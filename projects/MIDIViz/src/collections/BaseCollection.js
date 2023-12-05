@@ -2,10 +2,11 @@ class Collection{
     collection;
     onNotePlayed;
     onNoteEnded;
+    listenToAll;
 
-    //track index
+    //track index, the collection is associated with a track
     trackIdx;
-    //speed scale
+    //speed scale, the speed of the unit is multiplied by this value
     speed_scale;
 
     setTrackIdx(trackIdx) {
@@ -16,8 +17,11 @@ class Collection{
         this.speed_scale = speed_scale;
     }
 
+    setListenToAll(listenToAll){
+        this.listenToAll = listenToAll;
+    };
 
-    constructor(trackIdx = 0, speed_scale = 5e-3) {
+    constructor(trackIdx = 0, speed_scale = 5e-3, listenToAll = false) {
         this.collection = [];
         this.trackIdx = trackIdx;
         this.speed_scale = speed_scale;
@@ -29,6 +33,8 @@ class Collection{
         this.onNoteEnded = (detail)=>{
 
         };
+
+        this.listenToAll = listenToAll;
     }
 
     add(item){
@@ -96,13 +102,21 @@ class Collection{
     //set event listener for note played
     setOnNotePlayed(callback){
         this.onNotePlayed = callback;
-        document.addEventListener("notePlayed", (e)=>this.onNotePlayed(e.detail));
+        //only handle the event when the trackIdx matches or listenToAll is true
+        document.addEventListener("notePlayed", (e)=>{
+            if(e.detail.trackNum === this.trackIdx || this.listenToAll)
+                this.onNotePlayed(e.detail);
+        });
     }
 
     //set event listener for note ended
     setOnNoteEnded(callback){
         this.onNoteEnded = callback;
-        document.addEventListener("noteEnded", (e)=>this.onNoteEnded(e.detail));
+        //only handle the event when the trackIdx matches or listenToAll is true
+        document.addEventListener("noteEnded", (e)=>{
+            if(e.detail.trackNum === this.trackIdx || this.listenToAll)
+                this.onNoteEnded(e.detail);
+        });
     }
 
 };

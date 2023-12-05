@@ -37,7 +37,7 @@ class PianoRoll extends Collection {
     };
 
     constructor(p5, height=100, color_1=[255,255,255], color_2=[0,0,0]){
-        super(0,0);
+        super(0,0,true);
         this.height = height;
         this.color_1 = color_1;
         this.color_2 = color_2;

@@ -4,30 +4,15 @@ import vec2 from "../utils/Vec2.js";
 import PianoRoll from "./PianoRoll.js";
 
 class QuadSet extends Collection {
-    //track index
-    trackIdx;
-    //speed scale
-    speed_scale;
-
     /**
      * @param {number} trackIdx
      * @param {number} speed_scale
      * @returns {void}
      * @description constructor for a quads collection, given track index and speed scale
      */
-    constructor(trackIdx = 0, speed_scale = 5e-3) {
-        super();
-        this.trackIdx = trackIdx;
-        this.speed_scale = speed_scale;
+    constructor(trackIdx = 0, speed_scale = 5e-3, listenToAll = false) {
+        super(trackIdx, speed_scale, listenToAll);
         this.setOnNotePlayed(this.defaultOnNotePlayed);
-    }
-
-    setTrackIdx(trackIdx) {
-        this.trackIdx = trackIdx;
-    }
-
-    setSpeedScale(speed_scale) {
-        this.speed_scale = speed_scale;
     }
 
     /**
