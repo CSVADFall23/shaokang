@@ -25,7 +25,7 @@ new p5(function(p5){
         roll.step(p5);
     }
 
-    //on note played, generate some particles
+    //on note played, generate some notes
     keys.setOnNotePlayed((detail)=>{
         let pitch = detail.note.midi;
         let duration = detail.note.duration;

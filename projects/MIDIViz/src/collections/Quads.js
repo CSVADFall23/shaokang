@@ -7,6 +7,12 @@ class Quads extends Collection {
     //speed scale
     speed_scale;
 
+    /**
+     * @param {number} trackIdx
+     * @param {number} speed_scale
+     * @returns {void}
+     * @description constructor for a quads collection, given track index and speed scale
+     */
     constructor(trackIdx = 0, speed_scale = 5e-3) {
         super();
         this.trackIdx = trackIdx;

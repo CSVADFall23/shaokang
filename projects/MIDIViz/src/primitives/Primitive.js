@@ -1,6 +1,5 @@
 import vec2 from "../utils/Vec2.js";
 
-//By default draw circles
 class Primitive{
     //position, vec2
     //velocity, vec2

@@ -11,7 +11,7 @@ class PianoRollWithQuads extends CompoundCollection{
         this.collections.push(new Quads());
     }
 
-    //add particles
+    //add quads
     add(position, acceleration=new vec2(0, 1), sizeX = 10, sizeY=10, color = [255, 255, 255]) {
         this.collections[1].add(position, acceleration, sizeX, sizeY, color);
     }

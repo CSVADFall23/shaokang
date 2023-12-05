@@ -1,3 +1,5 @@
+import Primitive from "../primitives/Primitive.js";
+
 class Collection{
     collection;
     onNotePlayed;
@@ -5,7 +7,12 @@ class Collection{
 
     constructor(){
         this.collection = [];
+
         this.onNotePlayed = (detail)=>{
+
+        };
+
+        this.onNoteEnded = (detail)=>{
 
         };
     }
