@@ -10,7 +10,7 @@ class QuadSet extends Collection {
      * @returns {void}
      * @description constructor for a quads collection, given track index and speed scale
      */
-    constructor(trackIdx = 0, speed_scale = 5e-3, listenToAll = true) {
+    constructor(trackIdx = 0, speed_scale = 5e-3, listenToAll = false) {
         super(trackIdx, speed_scale, listenToAll);
         this.setOnNotePlayed(this.defaultOnNotePlayed);
     }

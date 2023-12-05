@@ -2,6 +2,7 @@ import CircularParticleSet from "../collections/CircularParticleSet.js";
 import ParticleSet from "../collections/ParticleSet.js";
 import PianoRollWithPrimitives from "../collections/PianoRollWithPrimitives.js";
 import QuadSet from "../collections/QuadSet.js";
+import RippleSet from "../collections/RippleSet.js";
 import NotePlayer from "../midi_player/NotePlayer.js";
 import vec2 from "../utils/Vec2.js";
 
