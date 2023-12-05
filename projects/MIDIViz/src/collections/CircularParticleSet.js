@@ -14,6 +14,14 @@ class CircularParticleSet extends Collection{
         for(let i=0;i<10;i++)
             this.add(deg,Math.random()*this.sizeCoeff+1,[Math.random()*50+200,Math.random()*50+200,Math.random()*50+200]);
     };
+
+    defaultOnNotePlayedWithMinMax(detail, minPitch, maxPitch){
+        let pitch = detail.note.midi;
+        //map the pitch to a degree in 0 to 360
+        let deg = (pitch-minPitch)/(maxPitch-minPitch)*360;
+        for(let i=0;i<10;i++)
+            this.add(deg,Math.random()*this.sizeCoeff+1,[Math.random()*50+200,Math.random()*50+200,Math.random()*50+200]);
+    };
     
 
     constructor(radius=100, trackIdx=0, speed_scale=5e-3){

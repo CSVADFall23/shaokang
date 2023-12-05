@@ -5,7 +5,7 @@ import QuadSet from './QuadSet.js';
 
 class PianoRollWithPrimitives extends CompoundCollection{
 
-    //index 0 for pianoroll, 1 for the other primitive
+    //index 0 for pianoroll, 1,2,... for the other primitive sets
     constructor(p5, initType=QuadSet){
         super();
         this.collections.push(new PianoRoll(p5));
@@ -20,7 +20,26 @@ class PianoRollWithPrimitives extends CompoundCollection{
                 console.log("Invalid initType");
                 break;
         }
+
+        let keys = this.collections[0];
+        let primitives = this.collections[1];
+        //set default callback with keys
+        primitives.setOnNotePlayed((detail)=>{
+            primitives.defaultOnNotePlayedWithKeys(detail,keys);
+        });
     }
+
+    //rewrite the default onNotePlayed callback, since the keys info are given
+    addCollection(collection){
+        super.addCollection(collection);
+        let setsDepdendentOnKeys = [QuadSet,ParticleSet];
+        if(setsDepdendentOnKeys.includes(collection.constructor)){
+            let keys = this.collections[0];
+            collection.setOnNotePlayed((detail)=>{
+                collection.defaultOnNotePlayedWithKeys(detail,keys);
+            });
+        }
+    };
 
     //get the pianoroll collection
     getPianoRoll(){

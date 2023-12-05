@@ -5,10 +5,6 @@ import vec2 from "../utils/Vec2.js";
 new p5(function(p5){
     const roll = new PianoRollWithPrimitives(p5);
     const player = new NotePlayer();
-
-    //alias for quick access
-    const keys = roll.collections[0];
-    const quads = roll.collections[1];
     
     p5.setup = async function() {
         p5.createCanvas(p5.windowWidth,p5.windowHeight);
@@ -24,14 +20,4 @@ new p5(function(p5){
     p5.draw = function() {
         roll.step(p5);
     }
-
-    //on note played, generate some notes
-    // quads.setOnNotePlayed((detail)=>{
-    //     let pitch = detail.note.midi;
-    //     let duration = detail.note.duration;
-    //     let pos = keys.getNoteByPitch(pitch).position;
-
-    //     quads.add(pos,new vec2(0,-1),12.5,80*duration,[Math.random()*50+200,Math.random()*50+200,Math.random()*50+200]);
-    //     }
-    // )
 });

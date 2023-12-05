@@ -1,6 +1,7 @@
 import Collection from "./BaseCollection.js";
 import Particle from "../primitives/Particle.js";
 import vec2 from "../utils/Vec2.js";
+import PianoRoll from "./PianoRoll.js";
 
 class ParticleSet extends Collection {
 
@@ -31,6 +32,22 @@ class ParticleSet extends Collection {
             this.add(pos,new vec2(0,1).add(vec2.random2D().scalar_mul(0.1)),10,[Math.random()*50+200,Math.random()*50+200,Math.random()*50+200]);
         }
     };
+
+    // pianoroll info given, default mapping
+    defaultOnNotePlayedWithKeys=(detail, keys)=>{
+        console.assert((keys instanceof PianoRoll),{msg:"Invalid keys type, expected PianoRoll"});
+
+        let pitch = detail.note.midi;
+        let pos = keys.getNoteByPitch(pitch).position;
+        //generate 10 particles on each note played, the particles are generated at the key position, 
+        //with a up vector perturbed by a random vector
+        for(let i=0;i<10;i++)
+        {
+            this.add(pos,new vec2(0,-1).add(vec2.random2D().scalar_mul(0.1)),10,[Math.random()*50+200,Math.random()*50+200,Math.random()*50+200]);
+        }
+    };
+
+
 };
 
 export default ParticleSet;

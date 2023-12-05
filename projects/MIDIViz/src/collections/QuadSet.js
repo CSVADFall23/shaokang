@@ -1,6 +1,7 @@
 import Collection from "./BaseCollection.js";
 import Quad from "../primitives/Quad.js";
 import vec2 from "../utils/Vec2.js";
+import PianoRoll from "./PianoRoll.js";
 
 class QuadSet extends Collection {
     //track index
@@ -49,6 +50,16 @@ class QuadSet extends Collection {
         let duration = detail.note.duration;
         let pos = new vec2(pitch/127*1920,0);
         this.add(pos,new vec2(0,1),12.5, 80*duration,[Math.random()*50+200,Math.random()*50+200,Math.random()*50+200]);
+    };
+
+    //pianoroll info given, default mapping
+    defaultOnNotePlayedWithKeys=(detail, keys)=>{
+        console.assert((keys instanceof PianoRoll),{msg:"Invalid keys type, expected PianoRoll"});
+
+        let pitch = detail.note.midi;
+        let duration = detail.note.duration;
+        let pos = keys.getNoteByPitch(pitch).position;
+        this.add(pos,new vec2(0,-1),12.5,80*duration,[Math.random()*50+200,Math.random()*50+200,Math.random()*50+200]);
     };
 
 };
