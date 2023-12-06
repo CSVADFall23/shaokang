@@ -2,11 +2,11 @@ import vec2 from "../utils/Vec2.js";
 import Primitive from "./Primitive.js";
 
 class Line extends Primitive{
-    p1;
-    p2;
+    p1 = vec2.zeros();
+    p2 = vec2.zeros();
 
-    constructor(p1, p2, color=[255,255,255]){
-        super();
+    constructor(p1, p2, velocity=vec2.zeros(), acceleration=vec2.zeros(),trackIdx=0,color=[200+Math.random()*55,200+Math.random()*55,200+Math.random()*55]){
+        super(vec2.zeros(),velocity,acceleration,0,trackIdx,color);
         this.p1 = p1;
         this.p2 = p2;
         this.color = color;
@@ -19,8 +19,8 @@ class Line extends Primitive{
 
     advance(){
         this.velocity = this.velocity.add(this.acceleration);
-        this.p1 = this.p1.add(this.velocity);
-        this.p2 = this.p2.add(this.velocity);
+        this.p1 = new vec2(this.p1.x,this.p1.y).add(this.velocity);
+        this.p2 = new vec2(this.p2.x,this.p2.y).add(this.velocity);
     }
 
     checkBoundary(p5){

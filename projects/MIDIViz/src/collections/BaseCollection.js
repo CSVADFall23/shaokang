@@ -73,6 +73,10 @@ class Collection{
         return this.collection.filter(callback);
     }
 
+    sort(callback){
+        this.collection.sort(callback);
+    }
+
     //each item in the collection advance one timestep (only change data, not draw to the canvas)
     advance(){
         this.collection.forEach(item=>item.advance());

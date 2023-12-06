@@ -1,14 +1,16 @@
 import CircularParticleSet from "../collections/CircularParticleSet.js";
+import LineSet from "../collections/LineSet.js";
 import ParticleSet from "../collections/ParticleSet.js";
 import PianoRollWithPrimitives from "../collections/PianoRollWithPrimitives.js";
 import QuadSet from "../collections/QuadSet.js";
 import RippleSet from "../collections/RippleSet.js";
 import NotePlayer from "../midi_player/NotePlayer.js";
 import vec2 from "../utils/Vec2.js";
+import Histogram from "../collections/Histogram.js";
 
 //a midi visualizer with Particle and NotePlayer class
 new p5(function(p5){
-    const roll = new PianoRollWithPrimitives(p5,ParticleSet);
+    const roll = new PianoRollWithPrimitives(p5,null,true);
     const player = new NotePlayer();
     
     //set up the play settings and particle speed
@@ -23,8 +25,9 @@ new p5(function(p5){
         player.play();
 
         roll.setSpeedScale(5e-2);
-        roll.addCollection(new QuadSet(1,5e-2,false));
-        roll.addCollection(new RippleSet(1,5e-2,true));
+        roll.addCollection(new QuadSet(0,5e-2,false));
+        roll.addCollection(new RippleSet(0,5e-2,true));
+        roll.addCollection(new Histogram(roll.getKeys()));
     }
 
     //called on each frame, the draw call loop
