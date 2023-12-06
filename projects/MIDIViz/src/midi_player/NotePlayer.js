@@ -141,11 +141,14 @@ class NotePlayer{
             piano.loaded().then(() => {
                 for(let i=0;i<this.tracks.length;i++){
                     this.tracks[i].notes.forEach(note => {
-                        piano.start({ note: note.midi+this.trackSettings[i].shift, velocity: note.velocity, duration: note.duration+this.trackSettings[i].sustain, time: note.time + now, 
+                        var playNote = note.midi+this.trackSettings[i].shift;
+                        piano.start({ note: playNote, velocity: note.velocity, duration: note.duration+this.trackSettings[i].sustain, time: note.time + now, 
                             onStart: () => {
+                            note.midi = playNote;
                             var e = new CustomEvent("notePlayed", {bubbles: true, detail:{note: note, trackNum:i}});
                             document.dispatchEvent(e);
                           }, onEnded: () => {
+                            note.midi = playNote;
                             var e = new CustomEvent("noteEnded",{bubbles: true, detail:{note: note, trackNum:i}});
                             document.dispatchEvent(e);
                           }});
@@ -170,11 +173,14 @@ class NotePlayer{
                 instr.output.addEffect("reverb",reverb,this.trackSettings[i].reverb);
 
                 this.tracks[i].notes.forEach(note => {
-                    instr.start({ note: note.midi+this.trackSettings[i].shift, velocity: note.velocity, duration: note.duration+this.trackSettings[i].sustain, time: note.time + now,
+                    var playNote = note.midi+this.trackSettings[i].shift;
+                    instr.start({ note: playNote, velocity: note.velocity, duration: note.duration+this.trackSettings[i].sustain, time: note.time + now,
                         onStart: () => {
+                            note.midi = playNote;
                             var e = new CustomEvent("notePlayed",{bubbles: true, detail:{note: note, trackNum:i}});
                             document.dispatchEvent(e);
                           },onEnded: () => {
+                            note.midi = playNote;
                             var e = new CustomEvent("noteEnded",{bubbles: true, detail:{note: note, trackNum:i}});
                             document.dispatchEvent(e);
                           }});

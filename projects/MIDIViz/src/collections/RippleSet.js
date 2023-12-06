@@ -13,9 +13,9 @@ class RippleSet extends Collection{
     };
 
     defaultOnNotePlayed=(detail)=>{
-        let pitch = detail.note.midi;
+        let duration = detail.note.duration
         let pos = new vec2(Math.random()*1920,Math.random()*1080);
-        this.add(new vec2(500,500),vec2.zeros(), 0, 0, 10*pitch,[Math.random()*50+200,Math.random()*50+200,Math.random()*50+200]);
+        this.add(pos,vec2.zeros(), 1, 300*duration,[Math.random()*50+200,Math.random()*50+200,Math.random()*50+200]);
     };
 };
 

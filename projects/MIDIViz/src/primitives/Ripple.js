@@ -27,9 +27,9 @@ class Ripple extends Primitive{
     };
 
     draw(p5){
-        // p5.noFill();
+        p5.noFill();
         p5.stroke(this.color);
-        p5.circle(this.position.x, this.position.y, 100);
+        p5.circle(this.position.x, this.position.y, this.currSize);
     }
 };
 

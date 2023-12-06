@@ -24,5 +24,4 @@ new p5(function(p5){
         roll.step(p5);
     }
 
-
 });
