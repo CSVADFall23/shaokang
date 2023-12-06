@@ -16,10 +16,10 @@ class PianoRollWithPrimitives extends CompoundCollection {
 
         switch (initType) {
             case QuadSet:
-                this.collections.push(new QuadSet());
+                this.collections.push(new QuadSet(0,5e-3,true));
                 break;
             case ParticleSet:
-                this.collections.push(new ParticleSet());
+                this.collections.push(new ParticleSet(0,5e-3,true));
                 break;
             case null:
                 return;

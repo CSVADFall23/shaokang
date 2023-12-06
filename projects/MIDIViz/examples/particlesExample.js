@@ -14,7 +14,7 @@ new p5(function(p5){
         p5.stroke(255);
         p5.noFill();
 
-        particles.push(new CircularParticle(100, Math.random()*360,0));
+        particles.push(new CircularParticle(100, Math.random()*360, Math.random()*1e-2));
         particles.forEach(p=>{
             if(p.checkBoundary(p5)){
                 particles.splice(particles.indexOf(p),1);

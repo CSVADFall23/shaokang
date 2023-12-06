@@ -13,6 +13,7 @@ new p5(function(p5){
         await player.load(url);
         player.setAllSustain(0.7);
         player.play();
+
         roll.setSpeedScale(5e-2);
     }
 
