@@ -33,7 +33,7 @@ class Histogram extends LineSet{
         for(let i=0;i<this.points.length-1;i++){
             let p1 = this.points[i];
             let p2 = this.points[i+1];
-            this.collection[i] = new Line(p1, p2, vec2.zeros(), vec2.zeros(), this.trackIdx, [Math.random() * 55 + 200, Math.random() * 55 + 200, Math.random() * 55 + 200]);
+            this.collection[i] = new Line(p1, p2, vec2.zeros(), vec2.zeros(), this.trackIdx, this.colorGenerator({}));
         }
     }
 

@@ -8,6 +8,12 @@ class Collection{
     trackIdx;
     //speed scale, the speed of the unit is multiplied by this value
     speed_scale;
+    //how the color is determined, takes in note detail, returns the color
+    colorGenerator;
+    //default color generator, returns a random color, towards brighter colors
+    defaultColorGenerator = (detail)=>{
+        return [Math.random()*55+200,Math.random()*55+200,Math.random()*55+200];
+    }
 
     setTrackIdx(trackIdx) {
         this.trackIdx = trackIdx;
@@ -35,6 +41,7 @@ class Collection{
         };
 
         this.listenToAll = listenToAll;
+        this.colorGenerator = this.defaultColorGenerator;
     }
 
     add(item){
@@ -121,6 +128,11 @@ class Collection{
             if(e.detail.trackNum === this.trackIdx || this.listenToAll)
                 this.onNoteEnded(e.detail);
         });
+    }
+
+    //set how the color is determined in the default onNotePlayed and onNoteEnded callback, the color is determined by this function
+    setColorGenerator(colorGenerator){
+        this.colorGenerator = colorGenerator;
     }
 
 };

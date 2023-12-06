@@ -11,7 +11,7 @@ class CircularParticleSet extends Collection {
     defaultOnNotePlayed = (detail) => {
         let deg = detail.note.midi / 127 * 360;
         for (let i = 0; i < 10; i++)
-            this.add(deg, Math.random() * this.sizeCoeff + 1, [Math.random() * 50 + 200, Math.random() * 50 + 200, Math.random() * 50 + 200]);
+            this.add(deg, Math.random() * this.sizeCoeff + 1, this.colorGenerator(detail));
     };
 
     //default callback with min max pitch info given, mapped pitch to 0 to 360
@@ -20,7 +20,7 @@ class CircularParticleSet extends Collection {
         //map the pitch to a degree in 0 to 360
         let deg = (pitch - minPitch) / (maxPitch - minPitch) * 360;
         for (let i = 0; i < 10; i++)
-            this.add(deg, Math.random() * this.sizeCoeff + 1, [Math.random() * 50 + 200, Math.random() * 50 + 200, Math.random() * 50 + 200]);
+            this.add(deg, Math.random() * this.sizeCoeff + 1, this.colorGenerator(detail));
     };
 
     constructor(radius = 100, trackIdx = 0, speed_scale = 5e-3, listenToAll = true) {

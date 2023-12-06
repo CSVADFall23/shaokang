@@ -76,12 +76,21 @@ class CompoundCollection{
 
     //set event listener for note played
     setOnNotePlayed(idx,callback){
+        console.assert(collectionIdx < this.collections.length && collectionIdx>=0,{msg:"Invalid collection index"});
         this.collections[idx].setOnNotePlayed(callback);
     }
 
     //set event listener for note ended
     setOnNoteEnded(idx,callback){
+        console.assert(collectionIdx < this.collections.length && collectionIdx>=0,{msg:"Invalid collection index"});
         this.collections[idx].setOnNoteEnded(callback);
+    }
+
+
+    //set colorGenerator for the specified collection
+    setColorGenerator(idx,generator){
+        console.assert(idx < this.collections.length && idx>=0,{msg:"Invalid collection index"});
+        this.collections[idx].setColorGenerator(generator);
     }
 };
 

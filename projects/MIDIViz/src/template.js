@@ -12,7 +12,7 @@ new p5(function(p5){
         const url = "../assets/bodyAndSoul.mid"        
         await player.load(url);
         player.setAllSustain(0.7);
-        player.play();
+        await player.play();
     }
 
     //called on each frame

@@ -24,32 +24,6 @@ class PianoRoll extends Collection {
 
     darkMode;
 
-    //default onNotePlayed callback
-    defaultOnNotePlayed = (detail) => {
-        let pitch = detail.note.midi;
-        this.setNoteColor(pitch, [Math.random() * 50 + 200, Math.random() * 50 + 200, Math.random() * 50 + 200]);
-    }
-
-    //default onNoteEnded callback
-    defaultOnNoteEnded = (detail) => {
-        let pitch = detail.note.midi;
-        if (this.getNoteByPitch(pitch).isWhiteKey) {
-            this.setNoteColor(pitch, this.color_1);
-        }
-        else {
-            this.setNoteColor(pitch, this.color_2);
-        }
-    };
-
-    //these methods are not allowed
-    add(){
-        console.error("PianoRoll does not support add()");
-    }
-
-    remove(){
-        console.error("PianoRoll does not support remove()");
-    }
-
     constructor(p5, height = 100, color_1 = [255, 255, 255], color_2 = [0, 0, 0], darkMode = false) {
         super(0, 0, true);
         this.height = height;
@@ -79,6 +53,43 @@ class PianoRoll extends Collection {
         this.recolor();
     }
 
+    //default onNotePlayed callback
+    defaultOnNotePlayed = (detail) => {
+        let pitch = detail.note.midi;
+        this.setNoteColor(pitch, [Math.random() * 50 + 200, Math.random() * 50 + 200, Math.random() * 50 + 200]);
+    }
+
+    //default onNoteEnded callback
+    defaultOnNoteEnded = (detail) => {
+        let pitch = detail.note.midi;
+        if (this.getNoteByPitch(pitch).isWhiteKey) {
+            this.setNoteColor(pitch, this.color_1);
+        }
+        else {
+            this.setNoteColor(pitch, this.color_2);
+        }
+    };
+
+    //these methods are not allowed
+    add(){
+        console.error("PianoRoll does not support add()");
+    }
+
+    remove(){
+        console.error("PianoRoll does not support remove()");
+    }
+
+    draw(p5){
+        if(this.darkMode)
+        {
+            p5.stroke(255);
+        }
+        else
+        {
+            p5.stroke(0);
+        }
+        this.collection.forEach(item => item.draw(p5));
+    }
 
     //disable movement and boundary check
     advance() { }; //do nothing

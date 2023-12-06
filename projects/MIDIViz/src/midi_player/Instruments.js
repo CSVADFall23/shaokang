@@ -12,7 +12,9 @@ var INSTRUMENTS = {
     "oboe":"oboe",
     "marimba":"marimba",
     "xylophone":"xylophone",
-    "music_box":"music_box"
+    "music_box":"music_box",
+    "electric_piano":"electric_piano_1",
+    "jazz_guitar":"electric_guitar_jazz"
 };
 
 //all available instruments

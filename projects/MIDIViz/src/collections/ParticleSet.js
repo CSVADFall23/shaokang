@@ -29,7 +29,7 @@ class ParticleSet extends Collection {
         let pos = new vec2(pitch/127*1920,0);
         for(let i=0;i<10;i++)
         {
-            this.add(pos,new vec2(0,1).add(vec2.random2D().scalar_mul(0.1)),10,[Math.random()*50+200,Math.random()*50+200,Math.random()*50+200]);
+            this.add(pos,new vec2(0,1).add(vec2.random2D().scalar_mul(0.1)),10, this.colorGenerator(detail));
         }
     };
 
@@ -43,7 +43,7 @@ class ParticleSet extends Collection {
         //with a up vector perturbed by a random vector
         for(let i=0;i<10;i++)
         {
-            this.add(pos,new vec2(0,-1).add(vec2.random2D().scalar_mul(0.1)),10,[Math.random()*50+200,Math.random()*50+200,Math.random()*50+200]);
+            this.add(pos,new vec2(0,-1).add(vec2.random2D().scalar_mul(0.1)),10, this.colorGenerator(detail));
         }
     };
 

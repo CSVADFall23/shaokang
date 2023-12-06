@@ -11,13 +11,13 @@ class LineSet extends Collection {
         this.setOnNoteEnded(this.defaultOnNoteEnded);
     }
 
-    add(p1, p2, velocity = vec2.zeros(), acceleration = vec2.zeros(), color = [Math.random() * 55 + 200, Math.random() * 55 + 200, Math.random() * 55 + 200]) {
+    add(p1, p2, velocity = vec2.zeros(), acceleration = vec2.zeros(), color = this.colorGenerator(detail)) {
         this.collection.push(new Line(p1, p2, velocity, acceleration, this.trackIdx, color));
     };
 
     defaultOnNotePlayed = (detail) => {
         let pos = new vec2(Math.random() * 1920, Math.random() * 1080);
-        this.add(pos, vec2.zeros(), vec2.zeros(), vec2.zeros(), [Math.random() * 50 + 200, Math.random() * 50 + 200, Math.random() * 50 + 200]);
+        this.add(pos, vec2.zeros(), vec2.zeros(), vec2.zeros(), this.colorGenerator(detail));
     };
 
     defaultOnNoteEnded = (detail) => {

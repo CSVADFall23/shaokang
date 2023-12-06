@@ -7,7 +7,7 @@ new p5(function(p5){
         const player = new NotePlayer();
         await player.load(url);
         player.setAllInstruments("marimba");
-        player.play();
+        await player.play();
     }
 
 });
