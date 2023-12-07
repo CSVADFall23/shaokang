@@ -25,15 +25,15 @@ class Histogram extends LineSet {
             this.points.push(sorted[i].position);
         }
 
-        this.updateFromPoints();
+        this.updateFromPoints({trackNum:-1});
     }
 
-    updateFromPoints() {
+    updateFromPoints(detail) {
         this.collection = [];
         for (let i = 0; i < this.points.length - 1; i++) {
             let p1 = this.points[i];
             let p2 = this.points[i + 1];
-            this.collection[i] = new Line(p1, p2, vec2.zeros(), vec2.zeros(), this.trackIdx, this.colorGenerator({}));
+            this.collection[i] = new Line(p1, p2, vec2.zeros(), vec2.zeros(), this.trackIdx, this.colorGenerator(detail));
         }
     }
 
@@ -55,7 +55,7 @@ class Histogram extends LineSet {
             this.points[i] = new vec2(p.x, p.y - freq / this.noteCount * 4000);
         }
 
-        this.updateFromPoints();
+        this.updateFromPoints(detail);
     };
 };
 

@@ -106,8 +106,14 @@ class Collection {
         this.draw(p5);
     }
 
-    //set event listener for note played
+    //set event listener for note played, only one event listener can be set at a time
     setOnNotePlayed(callback) {
+        //remove previous event listener
+        document.removeEventListener("notePlayed", (e) => {
+            if (e.detail.trackNum === this.trackIdx || this.listenToAll)
+                this.onNotePlayed(e.detail);
+        });
+
         this.onNotePlayed = callback;
         //only handle the event when the trackIdx matches or listenToAll is true
         document.addEventListener("notePlayed", (e) => {
@@ -116,8 +122,14 @@ class Collection {
         });
     }
 
-    //set event listener for note ended
+    //set event listener for note ended, only one event listener can be set at a time
     setOnNoteEnded(callback) {
+        //remove previous event listener
+        document.removeEventListener("notePlayed", (e) => {
+            if (e.detail.trackNum === this.trackIdx || this.listenToAll)
+                this.onNoteEnded(e.detail);
+        });
+
         this.onNoteEnded = callback;
         //only handle the event when the trackIdx matches or listenToAll is true
         document.addEventListener("noteEnded", (e) => {

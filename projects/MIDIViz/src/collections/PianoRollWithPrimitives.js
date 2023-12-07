@@ -6,13 +6,21 @@ import LineSet from './LineSet.js';
 import Histogram from './Histogram.js';
 
 class PianoRollWithPrimitives extends CompoundCollection {
+
     darkMode = false;
+    background = [255, 255, 255];
+    onNotePlayed = (detail) => { };
+    onNoteEnded = (detail) => { };
 
     //index 0 for pianoroll, 1,2,... for the other primitive sets
     constructor(p5, initType = QuadSet, darkMode = false, colorGenerator = (detail) => { return [Math.random() * 55 + 200, Math.random() * 55 + 200, Math.random() * 55 + 200] }) {
         super();
         this.darkMode = darkMode;
         this.collections.push(new PianoRoll(p5, 100, [0, 0, 0], [255, 255, 255], darkMode, colorGenerator));
+        if(darkMode)
+            this.setBackgroundColor([0,0,0]);
+        else
+            this.setBackgroundColor([255,255,255]);
 
         switch (initType) {
             case QuadSet:
@@ -34,18 +42,28 @@ class PianoRollWithPrimitives extends CompoundCollection {
         primitives.setOnNotePlayed((detail) => {
             primitives.defaultOnNotePlayedWithKeys(detail, keys);
         });
+
+        this.onNotePlayed = (detail) => {};
+        this.onNoteEnded = (detail) => {};
     }
+
+    setBackgroundColor(color) {
+        this.background = color;
+    };
 
     setDarkMode(darkMode) {
         this.darkMode = darkMode;
 
+        //recolor the pianoroll
         if (this.darkMode) {
             this.collections[0].setColor_1([0, 0, 0]);
             this.collections[0].setColor_2([255, 255, 255]);
+            this.setBackgroundColor([0, 0, 0]);
         }
         else {
             this.collections[0].setColor_1([255, 255, 255]);
             this.collections[0].setColor_2([0, 0, 0]);
+            this.setBackgroundColor([255,255,255]);
         }
 
         this.collections[0].recolor();
@@ -100,11 +118,7 @@ class PianoRollWithPrimitives extends CompoundCollection {
     //custom step function, since the draw order might be important
     step(p5) {
         var pianoroll = this.collections[0];
-
-        if (this.darkMode)
-            p5.background(0);
-        else
-            p5.background(255);
+        p5.background(this.background);
 
         this.getPrimitiveCollections().forEach((collection) => {
             collection.advance();
@@ -113,6 +127,32 @@ class PianoRollWithPrimitives extends CompoundCollection {
         })
 
         pianoroll.step(p5);
+    }
+
+    //since each primitive collection only cares about its own track, we need method to take care of global variables
+    //set callback for changing other global variables, only one event listener can be set at a time
+    setGlobalOnNotePlayed(callback) {
+        //remove the old event listener
+        document.removeEventListener("notePlayed", (e) => {
+            this.onNotePlayed(e.detail);
+        });
+        this.onNotePlayed = callback;
+        document.addEventListener("notePlayed", (e) => {
+            this.onNotePlayed(e.detail);
+        });
+    }
+
+    //since each primitive collection only cares about its own track, we need method to take care of global variables
+    //set callback for changing other global variables, only one event listener can be set at a time
+    setGlobalOnNoteEnded(callback) {
+        //remove the old event listener
+        document.removeEventListener("noteEnded", (e) => {
+            this.onNoteEnded(e.detail);
+        });
+        this.onNoteEnded = callback;
+        document.addEventListener("noteEnded", (e) => {
+            this.onNoteEnded(e.detail);
+        });
     }
 
 };

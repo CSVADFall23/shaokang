@@ -38,7 +38,19 @@ new p5(function (p5) {
         viz.addCollection(new ParticleSet(0, 5e-2, false, (detail) => { return [69, 202, 255] }));
         viz.addCollection(new QuadSet(1, 5e-2, false, (detail) => { return [255, 27, 107] }));
         viz.addCollection(new ParticleSet(2, 5e-2, false, (detail) => { return [255, 147, 15] }));
-        viz.addCollection(new Histogram(viz.getKeys(), 0, 5e-2, true));
+        viz.addCollection(new Histogram(viz.getKeys(), 0, 5e-2, true, (detail) => {
+            if (detail.trackNum == 0)
+                return [69, 202, 255];
+            else if (detail.trackNum == 1)
+                return [255, 27, 107];
+            else if (detail.trackNum == 2)
+                return [255, 147, 15];
+        }));
+
+        viz.setGlobalOnNotePlayed((detail) => {
+            let array = [[69, 202, 255], [255, 27, 107], [255, 147, 15]];
+            viz.setBackgroundColor(array[Math.floor(Math.random() * array.length)]);
+        });
 
         //piano color settings, each track has a different color
         viz.setColorGenerator(0, (detail) => {
