@@ -23,8 +23,8 @@ class CircularParticleSet extends Collection {
             this.add(deg, Math.random() * this.sizeCoeff + 1, this.colorGenerator(detail));
     };
 
-    constructor(radius = 100, trackIdx = 0, speed_scale = 5e-3, listenToAll = true) {
-        super(trackIdx, speed_scale, listenToAll);
+    constructor(radius = 100, trackIdx = 0, speed_scale = 5e-3, listenToAll = true, colorGenerator = this.defaultColorGenerator) {
+        super(trackIdx, speed_scale, listenToAll, colorGenerator);
         this.radius = radius;
         this.setOnNotePlayed(this.defaultOnNotePlayed);
         this.sizeCoeff = 15;

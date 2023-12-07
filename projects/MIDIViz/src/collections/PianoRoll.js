@@ -24,8 +24,8 @@ class PianoRoll extends Collection {
 
     darkMode;
 
-    constructor(p5, height = 100, color_1 = [255, 255, 255], color_2 = [0, 0, 0], darkMode = false) {
-        super(0, 0, true);
+    constructor(p5, height = 100, color_1 = [255, 255, 255], color_2 = [0, 0, 0], darkMode = false, colorGenerator = this.defaultColorGenerator) {
+        super(0, 0, true, colorGenerator);
         this.height = height;
         this.color_1 = color_1;
         this.color_2 = color_2;
@@ -56,7 +56,7 @@ class PianoRoll extends Collection {
     //default onNotePlayed callback
     defaultOnNotePlayed = (detail) => {
         let pitch = detail.note.midi;
-        this.setNoteColor(pitch, [Math.random() * 50 + 200, Math.random() * 50 + 200, Math.random() * 50 + 200]);
+        this.setNoteColor(pitch, this.colorGenerator(detail));
     }
 
     //default onNoteEnded callback

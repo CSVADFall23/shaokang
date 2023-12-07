@@ -92,6 +92,13 @@ class CompoundCollection{
         console.assert(idx < this.collections.length && idx>=0,{msg:"Invalid collection index"});
         this.collections[idx].setColorGenerator(generator);
     }
+
+    //set color generator for all collections, creating a consistent color scheme
+    setAllColorGenerators(generator){
+        this.collections.forEach(collection=>{
+            collection.setColorGenerator(generator);
+        });
+    }
 };
 
 export default CompoundCollection;

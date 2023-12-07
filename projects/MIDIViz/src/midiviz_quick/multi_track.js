@@ -30,19 +30,23 @@ new p5(function(p5){
         await player.play();
 
         roll.setSpeedScale(5e-2);
-        roll.addCollection(new QuadSet(1,5e-2,false));
-        roll.addCollection(new ParticleSet(0,5e-2,false));
-        roll.addCollection(new RippleSet(2,5e-2,false));
-        roll.addCollection(new RippleSet(3,5e-2,false));
+        roll.addCollection(new QuadSet(1,5e-2,false,(detail)=>{return [240,34,12]}));
+        roll.addCollection(new ParticleSet(2,5e-2,false,(detail)=>{return [12,240,34]}));
+        roll.addCollection(new ParticleSet(0,5e-2,false,(detail)=>{return [12,34,240]}));
+        roll.addCollection(new ParticleSet(3,5e-2,false,(detail)=>{return [240,12,34]}));
 
-
+        //piano color settings
         roll.setColorGenerator(0,(detail)=>{
-            return [255,255,255];
-        })
+            if(detail.trackNum == 0)
+                return [12,34,240];
+            else if(detail.trackNum == 1)
+                return [240,34,12];
+            else if(detail.trackNum == 2)
+                return [12,240,34];
+            else if(detail.trackNum == 3)
+                return [240,12,34];
+        });
 
-        roll.setColorGenerator(1,(detail)=>{
-            return [255,255,255];
-        })
     }
 
     //called on each frame, the draw call loop

@@ -10,8 +10,8 @@ class QuadSet extends Collection {
      * @returns {void}
      * @description constructor for a quads collection, given track index and speed scale
      */
-    constructor(trackIdx = 0, speed_scale = 5e-3, listenToAll = false) {
-        super(trackIdx, speed_scale, listenToAll);
+    constructor(trackIdx = 0, speed_scale = 5e-3, listenToAll = false, colorGenerator = this.defaultColorGenerator) {
+        super(trackIdx, speed_scale, listenToAll, colorGenerator);
         this.setOnNotePlayed(this.defaultOnNotePlayed);
     }
 
@@ -34,7 +34,7 @@ class QuadSet extends Collection {
         let pitch = detail.note.midi;
         let duration = detail.note.duration;
         let pos = new vec2(pitch/127*1920,0);
-        this.add(pos,new vec2(0,1),12.5, 80*duration,[Math.random()*50+200,Math.random()*50+200,Math.random()*50+200]);
+        this.add(pos,new vec2(0,1),12.5, 80*duration, this.colorGenerator(detail));
     };
 
     //pianoroll info given, default mapping
@@ -44,7 +44,7 @@ class QuadSet extends Collection {
         let pitch = detail.note.midi;
         let duration = detail.note.duration;
         let pos = keys.getNoteByPitch(pitch).position;
-        this.add(pos,new vec2(0,-1),12.5,80*duration,[Math.random()*50+200,Math.random()*50+200,Math.random()*50+200]);
+        this.add(pos,new vec2(0,-1),12.5,80*duration,this.colorGenerator(detail));
     };
 
 };

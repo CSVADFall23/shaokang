@@ -27,7 +27,7 @@ class Collection{
         this.listenToAll = listenToAll;
     };
 
-    constructor(trackIdx = 0, speed_scale = 5e-3, listenToAll = false) {
+    constructor(trackIdx = 0, speed_scale = 5e-3, listenToAll = false, colorGenerator = this.defaultColorGenerator) {
         this.collection = [];
         this.trackIdx = trackIdx;
         this.speed_scale = speed_scale;
@@ -41,7 +41,7 @@ class Collection{
         };
 
         this.listenToAll = listenToAll;
-        this.colorGenerator = this.defaultColorGenerator;
+        this.colorGenerator = colorGenerator;
     }
 
     add(item){
