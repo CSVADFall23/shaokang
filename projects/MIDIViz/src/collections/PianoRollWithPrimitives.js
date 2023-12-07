@@ -9,17 +9,17 @@ class PianoRollWithPrimitives extends CompoundCollection {
     darkMode = false;
 
     //index 0 for pianoroll, 1,2,... for the other primitive sets
-    constructor(p5, initType = QuadSet, darkMode = false, colorGenerator = (detail)=>{return [Math.random()*55+200,Math.random()*55+200,Math.random()*55+200]}) {
+    constructor(p5, initType = QuadSet, darkMode = false, colorGenerator = (detail) => { return [Math.random() * 55 + 200, Math.random() * 55 + 200, Math.random() * 55 + 200] }) {
         super();
         this.darkMode = darkMode;
         this.collections.push(new PianoRoll(p5, 100, [0, 0, 0], [255, 255, 255], darkMode, colorGenerator));
 
         switch (initType) {
             case QuadSet:
-                this.collections.push(new QuadSet(0,5e-3,true));
+                this.collections.push(new QuadSet(0, 5e-3, true));
                 break;
             case ParticleSet:
-                this.collections.push(new ParticleSet(0,5e-3,true));
+                this.collections.push(new ParticleSet(0, 5e-3, true));
                 break;
             case null:
                 return;

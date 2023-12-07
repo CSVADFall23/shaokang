@@ -5,8 +5,8 @@ import PianoRoll from "./PianoRoll.js";
 
 class LineSet extends Collection {
 
-    constructor(trackIdx = 0, speed_scale = 5e-3, listenToAll = false,colorGenerator = (detail)=>{return [Math.random()*55+200,Math.random()*55+200,Math.random()*55+200]}) {
-        super(trackIdx, speed_scale, listenToAll,colorGenerator);
+    constructor(trackIdx = 0, speed_scale = 5e-3, listenToAll = false, colorGenerator = (detail) => { return [Math.random() * 55 + 200, Math.random() * 55 + 200, Math.random() * 55 + 200] }) {
+        super(trackIdx, speed_scale, listenToAll, colorGenerator);
         this.setOnNotePlayed(this.defaultOnNotePlayed);
         this.setOnNoteEnded(this.defaultOnNoteEnded);
     }

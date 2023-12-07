@@ -1,6 +1,6 @@
 import vec2 from "../utils/Vec2.js";
 
-class Primitive{
+class Primitive {
     //a basic primitive class, with position, velocity, acceleration, size, color, trackIdx
     velocity;
     acceleration;
@@ -18,7 +18,7 @@ class Primitive{
      * @param {int} trackIdx  - the track index of the primitive
      * @param {Array<int>} color - the color of the primitive
     */
-    constructor(position, velocity, acceleration, size, trackIdx, color){
+    constructor(position, velocity, acceleration, size, trackIdx, color) {
         this.position = position;
         this.velocity = velocity;
         this.acceleration = acceleration;
@@ -32,7 +32,7 @@ class Primitive{
      * @params no parameters
      * @returns no return value
      */
-    advance(){
+    advance() {
         this.velocity = this.velocity.add(this.acceleration);
         this.position = this.position.add(this.velocity);
     }
@@ -42,8 +42,8 @@ class Primitive{
      * @param {p5} p5 - a p5.js instance
      * @returns {boolean} - true if the primitive is out of the boundary, false otherwise
      */
-    checkBoundary(p5){
-        if(this.position.x<0 || this.position.x>p5.windowWidth || this.position.y<0 || this.position.y>p5.windowHeight)
+    checkBoundary(p5) {
+        if (this.position.x < 0 || this.position.x > p5.windowWidth || this.position.y < 0 || this.position.y > p5.windowHeight)
             return true;
         return false;
     }
@@ -53,7 +53,7 @@ class Primitive{
      * @param {p5} p5 - a p5.js instance
      * @returns no return value
      */
-    draw(p5){
+    draw(p5) {
         p5.fill(this.color);
         p5.noStroke();
     }
@@ -63,7 +63,7 @@ class Primitive{
     * @param {Array<int>} color - the color of the primitive in RGB, e.g. [0,0,0] is black
     * @returns no return value
      */
-    setColor(color){
+    setColor(color) {
         this.color = color;
     }
 
@@ -72,7 +72,7 @@ class Primitive{
      * @param {int} trackIdx - the track index of the primitive
      * @returns no return value
      */
-    setTrackIdx(trackIdx){
+    setTrackIdx(trackIdx) {
         this.trackIdx = trackIdx;
     }
 
@@ -81,7 +81,7 @@ class Primitive{
      * @param {vec2} acceleration - the acceleration of the primitive
      * @returns no return value
      */
-    setAcceleration(acceleration){
+    setAcceleration(acceleration) {
         this.acceleration = acceleration;
     }
 
@@ -90,7 +90,7 @@ class Primitive{
      * @param {vec2} velocity - the velocity of the primitive
      * @returns no return value
      */
-    setVelocity(velocity){
+    setVelocity(velocity) {
         this.velocity = velocity;
     }
 
@@ -99,7 +99,7 @@ class Primitive{
      * @param {vec2} position - the position of the primitive in pixel
      * @returns no return value
      */
-    setPosition(position){
+    setPosition(position) {
         this.position = position;
     }
 
@@ -108,7 +108,7 @@ class Primitive{
      * @param {int} size - the size of the primitive in pixels
      * @returns no return value
     */
-    setSize(size){
+    setSize(size) {
         this.size = size;
     }
 

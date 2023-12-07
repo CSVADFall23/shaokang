@@ -23,7 +23,7 @@ class CircularParticleSet extends Collection {
             this.add(deg, Math.random() * this.sizeCoeff + 1, this.colorGenerator(detail));
     };
 
-    constructor(radius = 100, trackIdx = 0, speed_scale = 5e-3, listenToAll = true, colorGenerator = (detail)=>{return [Math.random()*55+200,Math.random()*55+200,Math.random()*55+200]}) {
+    constructor(radius = 100, trackIdx = 0, speed_scale = 5e-3, listenToAll = true, colorGenerator = (detail) => { return [Math.random() * 55 + 200, Math.random() * 55 + 200, Math.random() * 55 + 200] }) {
         super(trackIdx, speed_scale, listenToAll, colorGenerator);
         this.radius = radius;
         this.setOnNotePlayed(this.defaultOnNotePlayed);

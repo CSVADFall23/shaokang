@@ -1,5 +1,5 @@
 const handler = new FileHandler();
-handler.loadMidi("./assets/reminiscene.mid").then(()=>{
+handler.loadMidi("./assets/reminiscene.mid").then(() => {
     //test basic functions
     console.log(handler.getTrackName(0));
     console.log(handler.getTrackNotes(0));

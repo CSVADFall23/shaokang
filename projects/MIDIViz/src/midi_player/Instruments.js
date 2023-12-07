@@ -1,20 +1,20 @@
 //simplified naming
 var INSTRUMENTS = {
-    "piano":"acoustic_grand_piano",
-    "guitar":"acoustic_guitar_nylon",
-    "violin":"violin",
-    "cello":"cello",
-    "bass":"acoustic_bass",
-    "flute":"flute",
-    "clarinet":"clarinet",
-    "trumpet":"trumpet",
-    "sax":"alto_sax",
-    "oboe":"oboe",
-    "marimba":"marimba",
-    "xylophone":"xylophone",
-    "music_box":"music_box",
-    "electric_piano":"electric_piano_1",
-    "jazz_guitar":"electric_guitar_jazz"
+    "piano": "acoustic_grand_piano",
+    "guitar": "acoustic_guitar_nylon",
+    "violin": "violin",
+    "cello": "cello",
+    "bass": "acoustic_bass",
+    "flute": "flute",
+    "clarinet": "clarinet",
+    "trumpet": "trumpet",
+    "sax": "alto_sax",
+    "oboe": "oboe",
+    "marimba": "marimba",
+    "xylophone": "xylophone",
+    "music_box": "music_box",
+    "electric_piano": "electric_piano_1",
+    "jazz_guitar": "electric_guitar_jazz"
 };
 
 //all available instruments
@@ -149,4 +149,4 @@ var SOUNDFONT_INSTRUMENTS = [
     "xylophone"
 ];
 
-export {INSTRUMENTS, SOUNDFONT_INSTRUMENTS}
+export { INSTRUMENTS, SOUNDFONT_INSTRUMENTS }

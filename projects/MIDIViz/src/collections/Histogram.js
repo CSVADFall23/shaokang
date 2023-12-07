@@ -3,7 +3,7 @@ import vec2 from "../utils/Vec2.js";
 import PianoRoll from "./PianoRoll.js";
 import Line from "../primitives/Line.js";
 
-class Histogram extends LineSet{
+class Histogram extends LineSet {
     noteCount = 0;
     noteFreq = {};
     points = [];
@@ -12,7 +12,7 @@ class Histogram extends LineSet{
     advance() { }; //do nothing
     checkBoundary() { }; //do nothing
 
-    constructor(keys, trackIdx = 0, speed_scale = 5e-3, listenToAll = true, colorGenerator = (detail)=>{return [Math.random()*55+200,Math.random()*55+200,Math.random()*55+200]}) {
+    constructor(keys, trackIdx = 0, speed_scale = 5e-3, listenToAll = true, colorGenerator = (detail) => { return [Math.random() * 55 + 200, Math.random() * 55 + 200, Math.random() * 55 + 200] }) {
         console.assert((keys instanceof PianoRoll), { msg: "Invalid keys type, expected PianoRoll" });
 
         super(trackIdx, speed_scale, listenToAll, colorGenerator);
@@ -28,11 +28,11 @@ class Histogram extends LineSet{
         this.updateFromPoints();
     }
 
-    updateFromPoints(){
+    updateFromPoints() {
         this.collection = [];
-        for(let i=0;i<this.points.length-1;i++){
+        for (let i = 0; i < this.points.length - 1; i++) {
             let p1 = this.points[i];
-            let p2 = this.points[i+1];
+            let p2 = this.points[i + 1];
             this.collection[i] = new Line(p1, p2, vec2.zeros(), vec2.zeros(), this.trackIdx, this.colorGenerator({}));
         }
     }
@@ -51,10 +51,10 @@ class Histogram extends LineSet{
         //update the points by its frequency
         for (let i = 0; i < keys.sorted.length; i++) {
             let p = keys.sorted[i].position;
-            let freq = this.noteFreq[keys.sorted[i].pitch] ? this.noteFreq[keys.sorted[i].pitch]:0;
-            this.points[i] = new vec2(p.x, p.y - freq/this.noteCount * 4000);
+            let freq = this.noteFreq[keys.sorted[i].pitch] ? this.noteFreq[keys.sorted[i].pitch] : 0;
+            this.points[i] = new vec2(p.x, p.y - freq / this.noteCount * 4000);
         }
-        
+
         this.updateFromPoints();
     };
 };
