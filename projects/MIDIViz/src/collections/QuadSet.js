@@ -10,7 +10,7 @@ class QuadSet extends Collection {
      * @returns {void}
      * @description constructor for a quads collection, given track index and speed scale
      */
-    constructor(trackIdx = 0, speed_scale = 5e-3, listenToAll = false, colorGenerator = this.defaultColorGenerator) {
+    constructor(trackIdx = 0, speed_scale = 5e-3, listenToAll = false, colorGenerator = (detail)=>{return [Math.random()*55+200,Math.random()*55+200,Math.random()*55+200]}) {
         super(trackIdx, speed_scale, listenToAll, colorGenerator);
         this.setOnNotePlayed(this.defaultOnNotePlayed);
     }

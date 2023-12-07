@@ -19,12 +19,13 @@ class PianoRoll extends Collection {
     //color of the black keys
     color_2;
 
-    //sorted collection of keys
+    //sorted collection of keys, sorted by pitch
     sorted;
 
+    //dark mode
     darkMode;
 
-    constructor(p5, height = 100, color_1 = [255, 255, 255], color_2 = [0, 0, 0], darkMode = false, colorGenerator = this.defaultColorGenerator) {
+    constructor(p5, height = 100, color_1 = [255, 255, 255], color_2 = [0, 0, 0], darkMode = false, colorGenerator = (detail)=>{return [Math.random()*55+200,Math.random()*55+200,Math.random()*55+200]}) {
         super(0, 0, true, colorGenerator);
         this.height = height;
         this.color_1 = color_1;
@@ -154,6 +155,7 @@ class PianoRoll extends Collection {
         }
     }
     
+    //recolor the keys
     recolor(){
         this.collection.forEach(key=>{
             if(key.isWhiteKey)

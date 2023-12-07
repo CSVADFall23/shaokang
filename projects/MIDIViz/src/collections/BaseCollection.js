@@ -27,7 +27,7 @@ class Collection{
         this.listenToAll = listenToAll;
     };
 
-    constructor(trackIdx = 0, speed_scale = 5e-3, listenToAll = false, colorGenerator = this.defaultColorGenerator) {
+    constructor(trackIdx = 0, speed_scale = 5e-3, listenToAll = false, colorGenerator = (detail)=>{return [Math.random()*55+200,Math.random()*55+200,Math.random()*55+200]}) {
         this.collection = [];
         this.trackIdx = trackIdx;
         this.speed_scale = speed_scale;

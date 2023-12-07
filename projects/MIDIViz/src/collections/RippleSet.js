@@ -2,8 +2,8 @@ import Collection from "./BaseCollection.js";
 import Ripple from "../primitives/Ripple.js";
 import vec2 from "../utils/Vec2.js";
 
-class RippleSet extends Collection{
-    constructor(trackIdx = 0, speed_scale = 5e-3, listenToAll = false, colorGenerator = this.defaultColorGenerator) {
+class RippleSet extends Collection {
+    constructor(trackIdx = 0, speed_scale = 5e-3, listenToAll = false, colorGenerator = (detail) => { return [Math.random() * 55 + 200, Math.random() * 55 + 200, Math.random() * 55 + 200] }) {
         super(trackIdx, speed_scale, listenToAll, colorGenerator);
         this.setOnNotePlayed(this.defaultOnNotePlayed);
     }
@@ -12,10 +12,10 @@ class RippleSet extends Collection{
         this.collection.push(new Ripple(position, new vec2(0, 0), acceleration.scalar_mul(this.speed_scale), sizeAccel, size, this.trackIdx, color));
     };
 
-    defaultOnNotePlayed=(detail)=>{
+    defaultOnNotePlayed = (detail) => {
         let duration = detail.note.duration
-        let pos = new vec2(Math.random()*1920,Math.random()*1080);
-        this.add(pos,vec2.zeros(), 1, 300*duration,this.colorGenerator(detail));
+        let pos = new vec2(Math.random() * 1920, Math.random() * 1080);
+        this.add(pos, vec2.zeros(), 1, 300 * duration, this.colorGenerator(detail));
     };
 };
 

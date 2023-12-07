@@ -12,10 +12,10 @@ class Histogram extends LineSet{
     advance() { }; //do nothing
     checkBoundary() { }; //do nothing
 
-    constructor(keys, trackIdx = 0, speed_scale = 5e-3, listenToAll = true, colorGenerator = this.defaultColorGenerator) {
+    constructor(keys, trackIdx = 0, speed_scale = 5e-3, listenToAll = true, colorGenerator = (detail)=>{return [Math.random()*55+200,Math.random()*55+200,Math.random()*55+200]}) {
         console.assert((keys instanceof PianoRoll), { msg: "Invalid keys type, expected PianoRoll" });
 
-        super(trackIdx, speed_scale, listenToAll,colorGenerator);
+        super(trackIdx, speed_scale, listenToAll, colorGenerator);
         let sorted = keys.sorted;
         this.noteCount = 0;
         this.noteFreq = {};

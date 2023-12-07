@@ -38,6 +38,7 @@ new p5(function(p5){
         viz.addCollection(new ParticleSet(0,5e-2,false,(detail)=>{return [12,34,240]}));
         viz.addCollection(new QuadSet(1,5e-2,false,(detail)=>{return [240,34,12]}));
         viz.addCollection(new ParticleSet(2,5e-2,false,(detail)=>{return [12,240,34]}));
+        viz.addCollection(new Histogram(viz.getKeys(),0,5e-2,true));
 
         //piano color settings, each track has a different color
         viz.setColorGenerator(0,(detail)=>{
