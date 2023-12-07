@@ -25,7 +25,7 @@ class PianoRoll extends Collection {
     //dark mode
     darkMode;
 
-    constructor(p5, height = 100, color_1 = [255, 255, 255], color_2 = [0, 0, 0], darkMode = false, colorGenerator = (detail)=>{return [Math.random()*55+200,Math.random()*55+200,Math.random()*55+200]}) {
+    constructor(p5, height = 100, color_1 = [255, 255, 255], color_2 = [0, 0, 0], darkMode = false, colorGenerator = (detail) => { return [Math.random() * 55 + 200, Math.random() * 55 + 200, Math.random() * 55 + 200] }) {
         super(0, 0, true, colorGenerator);
         this.height = height;
         this.color_1 = color_1;
@@ -33,22 +33,20 @@ class PianoRoll extends Collection {
         this.initCollection(p5);
         this.setOnNoteEnded(this.defaultOnNoteEnded);
         this.setOnNotePlayed(this.defaultOnNotePlayed);
-        
+
         //gives a sorted collection of keys
         let temp = structuredClone(this.collection);
         temp.sort((a, b) => a.pitch - b.pitch);
         this.sorted = temp;
         this.darkMode = darkMode;
 
-        if(this.darkMode)
-        {
-            this.setColor_1([0,0,0]);
-            this.setColor_2([255,255,255]);
+        if (this.darkMode) {
+            this.setColor_1([0, 0, 0]);
+            this.setColor_2([255, 255, 255]);
         }
-        else
-        {
-            this.setColor_1([255,255,255]);
-            this.setColor_2([0,0,0]);
+        else {
+            this.setColor_1([255, 255, 255]);
+            this.setColor_2([0, 0, 0]);
         }
 
         this.recolor();
@@ -72,32 +70,27 @@ class PianoRoll extends Collection {
     };
 
     //these methods are not allowed
-    add(){
+    add() {
         console.error("PianoRoll does not support add()");
     }
 
-    remove(){
+    remove() {
         console.error("PianoRoll does not support remove()");
-    }
-
-    draw(p5){
-        if(this.darkMode)
-        {
-            p5.stroke(255);
-        }
-        else
-        {
-            p5.stroke(0);
-        }
-        this.collection.forEach(item => item.draw(p5));
     }
 
     //disable movement and boundary check
     advance() { }; //do nothing
     checkBoundary() { }; //do nothing
 
-    draw(p5) { //draw the keys
-        p5.stroke(1);
+    draw(p5) {
+        //draw the keys
+        if (this.darkMode) {
+            p5.stroke(255);
+        }
+        else {
+            p5.stroke(0);
+        }
+
         this.collection.forEach(item => item.draw(p5));
     }
 
@@ -154,11 +147,11 @@ class PianoRoll extends Collection {
             key.color = color;
         }
     }
-    
+
     //recolor the keys
-    recolor(){
-        this.collection.forEach(key=>{
-            if(key.isWhiteKey)
+    recolor() {
+        this.collection.forEach(key => {
+            if (key.isWhiteKey)
                 key.color = this.color_1;
             else
                 key.color = this.color_2;

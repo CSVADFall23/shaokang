@@ -52,7 +52,7 @@ class Histogram extends LineSet{
         for (let i = 0; i < keys.sorted.length; i++) {
             let p = keys.sorted[i].position;
             let freq = this.noteFreq[keys.sorted[i].pitch] ? this.noteFreq[keys.sorted[i].pitch]:0;
-            this.points[i] = new vec2(p.x, p.y - freq/this.noteCount * 10000);
+            this.points[i] = new vec2(p.x, p.y - freq/this.noteCount * 4000);
         }
         
         this.updateFromPoints();

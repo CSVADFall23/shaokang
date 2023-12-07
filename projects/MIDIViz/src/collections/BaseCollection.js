@@ -10,10 +10,6 @@ class Collection{
     speed_scale;
     //how the color is determined, takes in note detail, returns the color
     colorGenerator;
-    //default color generator, returns a random color, towards brighter colors
-    defaultColorGenerator = (detail)=>{
-        return [Math.random()*55+200,Math.random()*55+200,Math.random()*55+200];
-    }
 
     setTrackIdx(trackIdx) {
         this.trackIdx = trackIdx;

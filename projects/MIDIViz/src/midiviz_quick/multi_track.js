@@ -35,19 +35,19 @@ new p5(function(p5){
         viz.setSpeedScale(5e-2);
 
         //add primitives, and they listen to different tracks
-        viz.addCollection(new ParticleSet(0,5e-2,false,(detail)=>{return [12,34,240]}));
-        viz.addCollection(new QuadSet(1,5e-2,false,(detail)=>{return [240,34,12]}));
-        viz.addCollection(new ParticleSet(2,5e-2,false,(detail)=>{return [12,240,34]}));
+        viz.addCollection(new ParticleSet(0,5e-2,false,(detail)=>{return [69,202,255]}));
+        viz.addCollection(new QuadSet(1,5e-2,false,(detail)=>{return [255,27,107]}));
+        viz.addCollection(new ParticleSet(2,5e-2,false,(detail)=>{return [255,147,15]}));
         viz.addCollection(new Histogram(viz.getKeys(),0,5e-2,true));
 
         //piano color settings, each track has a different color
         viz.setColorGenerator(0,(detail)=>{
             if(detail.trackNum == 0)
-                return [12,34,240];
+                return [69,202,255];
             else if(detail.trackNum == 1)
-                return [240,34,12];
+                return [255,27,107];
             else if(detail.trackNum == 2)
-                return [12,240,34];
+                return [255,147,15];
         });
 
     }
