@@ -14,8 +14,10 @@ class NotePlayer {
         this.trackSettings = [];
     };
 
-    //get min and max pitch of a certain track
-    //write result to trackSettings array
+    /**
+     * @description get min and max pitch of a certain track
+     * write result to trackSettings array
+     */
     calcMinMaxPitch(idx) {
         let min = 127;
         let max = 0;
@@ -28,8 +30,10 @@ class NotePlayer {
         this.trackSettings[idx].maxPitch = max;
     }
 
-    //get min and max pitch of all tracks
-    //write result to trackSettings array
+    /**
+ * @description  Get min and max pitch of all tracks.
+    Write result to trackSettings array
+ */
     calcAllMinMaxPitch() {
         for (let i = 0; i < this.trackSettings.length; i++)
             this.calcMinMaxPitch(i);
@@ -59,7 +63,9 @@ class NotePlayer {
         });
     }
 
-    //set instrument type of a certain track
+    /**
+     * @description Set instrument type of a certain track
+     */
     setInstrument(instr, idx = 0) {
         //assert idx is valid
         console.assert(idx >= 0 && idx < this.trackSettings.length, { msg: "index out of bound" });
@@ -68,7 +74,9 @@ class NotePlayer {
         this.trackSettings[idx].instrument = INSTRUMENTS[instr.toLowerCase()];
     }
 
-    //get track setting of a certain track
+    /**
+     * @description Get track setting of a certain track
+     */
     getTrackSetting(idx) {
         //assert idx is valid
         console.assert(idx >= 0 && idx < this.trackSettings.length, { msg: "index out of bound" });
@@ -108,7 +116,10 @@ class NotePlayer {
         });
     }
 
-    //load the midi file, async method since load Midi is async
+
+    /**
+     * @description Load the midi file, async method since load Midi is async
+     */
     async load(url) {
         const handler = new FileHandler();
         await handler.loadMidi(url).then(() => {
@@ -124,8 +135,9 @@ class NotePlayer {
     };
 
 
-    //play the song (all tracks)
-    //by default with piano
+    /**
+     * @description  Play the song (all tracks). By default with piano
+     */
     defaultPlay() {
         //Resume Audio Context
         navigator.mediaDevices.getUserMedia(constraints)
@@ -161,7 +173,9 @@ class NotePlayer {
             })
     };
 
-    //play the song (all tracks) with specified instrument
+    /**
+     * @description  Play the song (all tracks) with specified track settings
+     */
     async play() {
 
         const context = new AudioContext(); // create the audio context

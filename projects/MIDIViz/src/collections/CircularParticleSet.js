@@ -2,19 +2,34 @@ import Collection from "./BaseCollection.js";
 import CircularParticle from "../primitives/CircularParticle.js";
 
 class CircularParticleSet extends Collection {
-    //circular radius
+    /** 
+    @description The radius(in pixel) of the circle. 
+    All particles starts from the edge of the circle
+    */
     radius;
-    //size coefficient
+
+    /** 
+    @description The size coefficient of each particle, 
+    by default the size of particle is sizeCoeff*Math.random()+1
+    */
     sizeCoeff;
 
-    //default callback with no min max pitch info given
+    /** 
+    @description Default callback when a note is being played. 
+    Particles' initial position is decided by (midi / 127 *360)
+    which is the degree on the circle
+    */
     defaultOnNotePlayed = (detail) => {
         let deg = detail.note.midi / 127 * 360;
         for (let i = 0; i < 10; i++)
             this.add(deg, Math.random() * this.sizeCoeff + 1, this.colorGenerator(detail));
     };
 
-    //default callback with min max pitch info given, mapped pitch to 0 to 360
+    /** 
+    @description Default callback when a note is being played, with min max pitch info given.
+    Particles' initial position is mapped to (0, 360) degrees. Making sure the visualization is not skewed
+    due to unused MIDI pitch.
+    */
     defaultOnNotePlayedWithMinMax(detail, minPitch, maxPitch) {
         let pitch = detail.note.midi;
         //map the pitch to a degree in 0 to 360

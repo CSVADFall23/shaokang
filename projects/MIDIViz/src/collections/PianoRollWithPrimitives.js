@@ -8,12 +8,19 @@ import Histogram from './Histogram.js';
 class PianoRollWithPrimitives extends CompoundCollection {
 
     darkMode = false;
+
+    /** 
+    @description The background color of the visualization
+    */
+
     background = [255, 255, 255];
     onNotePlayed = (detail) => { };
     onNoteEnded = (detail) => { };
 
-    //index 0 for pianoroll, 1,2,... for the other primitive sets
-    constructor(p5, initType = QuadSet, darkMode = false, colorGenerator = (detail) => { return [Math.random() * 55 + 200, Math.random() * 55 + 200, Math.random() * 55 + 200] }) {
+    /** 
+    @description Initialize a PianoRoll with primitives, initType stands for the first primitive comes along with the piano roll
+    */
+    constructor(p5, initType = null, darkMode = false, colorGenerator = (detail) => { return [Math.random() * 55 + 200, Math.random() * 55 + 200, Math.random() * 55 + 200] }) {
         super();
         this.darkMode = darkMode;
         this.collections.push(new PianoRoll(p5, 100, [0, 0, 0], [255, 255, 255], darkMode, colorGenerator));
@@ -69,8 +76,10 @@ class PianoRollWithPrimitives extends CompoundCollection {
         this.collections[0].recolor();
     };
 
-
-    //rewrite the default onNotePlayed callback, since the keys info are given
+    /** 
+    @description Adding a collection, we may rewrite the default onNotePlayed callback
+    since the keys info are given in this class
+    */
     addCollection(collection) {
         super.addCollection(collection);
         let setsDepdendentOnKeys = [QuadSet, ParticleSet, Histogram];
@@ -82,20 +91,20 @@ class PianoRollWithPrimitives extends CompoundCollection {
         }
     };
 
-    //get the pianoroll collection
+    /**
+     * @description Get the pianoroll collection
+    */
     getKeys() {
         return this.collections[0];
     };
 
-    //get primitive collections, excluding pianoroll
+    /**
+     * @description Get the primitive collections, excluding pianoroll
+    */
     getPrimitiveCollections() {
         return this.collections.slice(1);
     }
 
-    //add primitive
-    addPrimitive(position, init_dir = new vec2(0, 1), sizeX = 10, sizeY = 10, color = [255, 255, 255]) {
-        this.collections[1].add(position, init_dir, sizeX, sizeY, color);
-    }
 
     setSpeedScale(speed_scale) {
         this.collections.forEach((collection) => {
@@ -129,8 +138,10 @@ class PianoRollWithPrimitives extends CompoundCollection {
         pianoroll.step(p5);
     }
 
-    //since each primitive collection only cares about its own track, we need method to take care of global variables
-    //set callback for changing other global variables, only one event listener can be set at a time
+    /**
+     * @description since each primitive collection only cares about its own track, we need method to take care of global variables
+        set callback for changing other global variables, only one event listener can be set at a time
+     */
     setGlobalOnNotePlayed(callback) {
         //remove the old event listener
         document.removeEventListener("notePlayed", (e) => {
@@ -142,8 +153,10 @@ class PianoRollWithPrimitives extends CompoundCollection {
         });
     }
 
-    //since each primitive collection only cares about its own track, we need method to take care of global variables
-    //set callback for changing other global variables, only one event listener can be set at a time
+    /**
+     @description since each primitive collection only cares about its own track, we need method to take care of global variables
+        set callback for changing other global variables, only one event listener can be set at a time
+     */
     setGlobalOnNoteEnded(callback) {
         //remove the old event listener
         document.removeEventListener("noteEnded", (e) => {

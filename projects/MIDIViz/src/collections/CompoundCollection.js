@@ -1,29 +1,43 @@
-//an array of collections
 class CompoundCollection {
-    //collections
+    /** 
+    @description The array of collections
+    */
     collections;
-    //p5 instance
 
     constructor() {
         this.collections = [];
     }
 
+    /** 
+     @description Adding a collection to the set
+     */
     addCollection(collection) {
         this.collections.push(collection);
     }
 
+    /** 
+     @description Remove a collection by its index
+     */
     removeCollection(idx) {
         console.assert(idx < this.collections.length && idx >= 0, { msg: "Invalid collection index" });
         this.collections.splice(idx, 1);
     }
 
-    //set certain collection listen to all tracks or not
+    /**
+     *  @param {number} idx - The index of the collection
+     *  @param {boolean} listenToAll - If the collection listens to all tracks
+     *  @description Set if the colllection listens to all track
+     */
     setCollectionListenToAll(idx, listenToAll) {
         console.assert(idx < this.collections.length && idx >= 0, { msg: "Invalid collection index" });
         this.collections[idx].setListenToAll(listenToAll);
     };
 
-    //set certain collection listen to a certain track
+    /**
+     *  @param {number} idx - The index of the collection
+     *  @param {number} trackIdx - The index of the music track
+     *  @description Set the collection (specified by idx) listens to event from the track (specified by trackIdx)
+     */
     setCollectionListen(idx, trackIdx) {
         console.assert(idx < this.collections.length && idx >= 0, { msg: "Invalid collection index" });
         this.collections[idx].setTrackIdx(trackIdx);
@@ -44,7 +58,6 @@ class CompoundCollection {
     }
 
     step(p5) {
-        //custom step function, called on each frame
         this.collections.forEach(collection => {
             collection.step(p5);
         });

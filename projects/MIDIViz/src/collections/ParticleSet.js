@@ -13,20 +13,14 @@ class ParticleSet extends Collection {
         }
     }
 
-    /**
-     * @param {vec2} position
-     * @param {vec2} acceleration
-     * @param {number} size
-     * @param {number[]} color
-     * @returns {void}
-     * @description add particles given position, initial direction, size and color
-     */
     add(position, acceleration = new vec2(0, 1), size = 10, color = [0, 0, 0]) {
         this.collection.push(new Particle(position, new vec2(0, 0), acceleration.scalar_mul(this.speed_scale), size, this.trackIdx, color));
     }
 
-    // no pianoroll info given,
-    // a simple mapping is given by scaling the pitch
+    /**
+     * @description The default mapping is give by scaling pitch so that 
+     * the initial x position is related to its pitch, the initial y position is 0
+     */
     defaultOnNotePlayed = (detail) => {
         let pitch = detail.note.midi;
         let pos = new vec2(pitch / 127 * 1920, 0);
@@ -35,7 +29,10 @@ class ParticleSet extends Collection {
         }
     };
 
-    // pianoroll info given, default mapping
+    /**
+     * @description The mapping when there's a PianoRoll. The initial position of the quad is exactly at the corresponding
+     * piano key.
+     */
     defaultOnNotePlayedWithKeys = (detail, keys) => {
         console.assert((keys instanceof PianoRoll), { msg: "Invalid keys type, expected PianoRoll" });
 

@@ -3,13 +3,9 @@ import Quad from "../primitives/Quad.js";
 import vec2 from "../utils/Vec2.js";
 import PianoRoll from "./PianoRoll.js";
 
+//A collection contains a set of quads
 class QuadSet extends Collection {
-    /**
-     * @param {number} trackIdx
-     * @param {number} speed_scale
-     * @returns {void}
-     * @description constructor for a quads collection, given track index and speed scale
-     */
+
     constructor(trackIdx = 0, speed_scale = 5e-3, listenToAll = false, colorGenerator = (detail) => { return [Math.random() * 55 + 200, Math.random() * 55 + 200, Math.random() * 55 + 200] }) {
         super(trackIdx, speed_scale, listenToAll, colorGenerator);
         this.setOnNotePlayed(this.defaultOnNotePlayed);
@@ -22,14 +18,16 @@ class QuadSet extends Collection {
      * @param {number} sizeY
      * @param {number[]} color
      * @returns {void}
-     * @description add particles given position, initial direction, size and color
+     * @description add a quad to the collection given position, initial direction, size and color
      */
     add(position, acceleration = new vec2(0, -1), sizeX = 12.5, sizeY = 10, color = this.colorGenerator(detail)) {
         this.collection.push(new Quad(position, new vec2(0, 0), acceleration.scalar_mul(this.speed_scale), this.trackIdx, sizeX, sizeY, color));
     }
 
-    //no pianoroll info given
-    //a simple mapping is given by scaling the pitch
+
+    /**
+     * @description default mapping is given by scaling the pitch as the x position
+     */
     defaultOnNotePlayed = (detail) => {
         let pitch = detail.note.midi;
         let duration = detail.note.duration;
@@ -37,7 +35,10 @@ class QuadSet extends Collection {
         this.add(pos, new vec2(0, 1), 12.5, 80 * duration, this.colorGenerator(detail));
     };
 
-    //pianoroll info given, default mapping
+    /**
+     * @description if there's PianoRoll, the initial position of the quad is exactly at the corresponding
+     * piano key.
+     */
     defaultOnNotePlayedWithKeys = (detail, keys) => {
         console.assert((keys instanceof PianoRoll), { msg: "Invalid keys type, expected PianoRoll" });
 

@@ -12,14 +12,22 @@ import vec2 from "../utils/Vec2.js";
 // ----------------------------------------------------------------
 class PianoRoll extends Collection {
 
-    //height of the piano roll, in pixels
+    /** 
+    @description Height of the piano roll, in pixels
+    */
     height;
-    //color of the white keys
+    /** 
+    @description First color of the piano roll, (white key)
+    */
     color_1;
-    //color of the black keys
+    /** 
+    @description Second color of the piano roll, (black key)
+    */
     color_2;
 
-    //sorted collection of keys, sorted by pitch
+    /** 
+    @description The sorted collection of keys, sorted by pitch
+    */
     sorted;
 
     //dark mode
@@ -52,13 +60,17 @@ class PianoRoll extends Collection {
         this.recolor();
     }
 
-    //default onNotePlayed callback
+    /** 
+    @description The corresponding note will have the color spceified by the colorGenerator
+    */
     defaultOnNotePlayed = (detail) => {
         let pitch = detail.note.midi;
         this.setNoteColor(pitch, this.colorGenerator(detail));
     }
 
-    //default onNoteEnded callback
+    /** 
+    @description The corresponding note returns back to its original color once its ended
+    */
     defaultOnNoteEnded = (detail) => {
         let pitch = detail.note.midi;
         if (this.getNoteByPitch(pitch).isWhiteKey) {
@@ -94,6 +106,9 @@ class PianoRoll extends Collection {
         this.collection.forEach(item => item.draw(p5));
     }
 
+    /** 
+    @description Initialize all the keys based on the piano keys' distribution
+    */
     initCollection(p5) {
         //draw the piano roll at the bottom of the screen
         const offset = p5.windowHeight - this.height;
@@ -133,14 +148,23 @@ class PianoRoll extends Collection {
         }
     }
 
+    /** 
+    @description Get the quad object by pitch
+    */
     getNoteByPitch(pitch) {
         return this.collection.find(key => key.pitch === pitch);
     }
 
+    /** 
+    @description Get the quad index (sorted by pitch) by pitch
+    */
     getSortedNoteIdxByPitch(pitch) {
         return this.sorted.findIndex(key => key.pitch === pitch);
     }
 
+    /** 
+    @description Set the note color by pitch
+    */
     setNoteColor(pitch, color) {
         const key = this.getNoteByPitch(pitch);
         if (key) {
@@ -148,7 +172,9 @@ class PianoRoll extends Collection {
         }
     }
 
-    //recolor the keys
+    /** 
+    @description Recolor the key to the specified color_1 and color_2
+    */
     recolor() {
         this.collection.forEach(key => {
             if (key.isWhiteKey)

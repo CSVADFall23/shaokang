@@ -15,11 +15,17 @@ class LineSet extends Collection {
         this.collection.push(new Line(p1, p2, velocity, acceleration, this.trackIdx, color));
     };
 
+    /** 
+     @description By default, generate a random line on the canvas when a note is being played
+     */
     defaultOnNotePlayed = (detail) => {
         let pos = new vec2(Math.random() * 1920, Math.random() * 1080);
         this.add(pos, vec2.zeros(), vec2.zeros(), vec2.zeros(), this.colorGenerator(detail));
     };
 
+    /** 
+     @description By default, remove a line from the collection when a note is ended.
+     */
     defaultOnNoteEnded = (detail) => {
         if (this.collection.length > 0)
             this.collection.pop();

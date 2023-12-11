@@ -1,10 +1,9 @@
 import vec2 from "../utils/Vec2.js";
 
 class Primitive {
-    //a basic primitive class, with position, velocity, acceleration, size, color, trackIdx
+    
     velocity;
     acceleration;
-
     position;
     size;
     color;
@@ -16,7 +15,7 @@ class Primitive {
      * @param {vec2} acceleration - the initial acceleration of the primitive
      * @param {int} size  - the size of the primitive
      * @param {int} trackIdx  - the track index of the primitive
-     * @param {Array<int>} color - the color of the primitive
+     * @param {number[]} color - the color of the primitive
     */
     constructor(position, velocity, acceleration, size, trackIdx, color) {
         this.position = position;
